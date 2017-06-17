@@ -43,7 +43,7 @@ TSharedRef< FSlateStyleSet > FAdCollectionEditorStyle::Create()
 	TSharedRef< FSlateStyleSet > Style = MakeShareable(new FSlateStyleSet("AdCollectionEditorStyle"));
 	Style->SetContentRoot(IPluginManager::Get().FindPlugin("AdCollection")->GetBaseDir() / TEXT("Resources"));
 
-	Style->Set("AdCollectionEditor.OpenPluginWindow", new IMAGE_BRUSH(TEXT("ButtonIcon_40x"), Icon40x40));
+	Style->Set("AdCollectionEditor.OpenPluginWindow", new IMAGE_BRUSH(TEXT("Icon128"), Icon40x40));
 
 	return Style;
 }
