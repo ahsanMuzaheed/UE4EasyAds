@@ -23,6 +23,11 @@
       "Name": "Vungle",
       "Type": "Runtime",
       "LoadingPhase": "PreLoadingScreen"
+    },
+    {
+      "Name": "AdCollectionEditor",
+      "Type": "Editor",
+      "LoadingPhase": "Default"
     }
   ]
 }
