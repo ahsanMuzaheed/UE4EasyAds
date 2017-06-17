@@ -6,8 +6,8 @@
 		<log text="VungleSDK Android init"/>
 		
 		<!-- get packaging for Vungle from ini and reset it if architecture not supported -->
-		<setBoolFromProperty result="bEnabled" ini="Engine" section="Vungle" property="bEnabled" default="false"/>
-		<setStringFromProperty result="AppId" ini="Engine" section="Vungle" property="AppId" default="0"/>
+		<setBoolFromProperty result="bEnabled" ini="Engine" section="/Script/AdCollectionEditor.VungleSetting" property="bEnabled" default="false"/>
+		<setStringFromProperty result="AppId" ini="Engine" section="/Script/AdCollectionEditor.VungleSetting" property="AppId" default="0"/>
 		<dumpvars/>
 	</init>
 	

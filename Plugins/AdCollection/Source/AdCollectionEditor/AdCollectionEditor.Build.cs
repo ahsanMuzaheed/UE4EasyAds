@@ -35,17 +35,25 @@ public class AdCollectionEditor : ModuleRules
 		PrivateDependencyModuleNames.AddRange(
 			new string[]
 			{
-				"Projects",
-				"InputCore",
-				"UnrealEd",
-				"LevelEditor",
-				"CoreUObject",
-				"Engine",
-				"Slate",
-				"SlateCore",
-				// ... add private dependencies that you statically link with here ...	
-				"AdCollection",
-			}
+                "Core",
+                "CoreUObject",
+                "InputCore",
+                "UnrealEd",
+                "Engine",
+                "Slate",
+                "SlateCore",
+                "EditorStyle",
+                "EditorWidgets",
+                "DesktopWidgets",
+                "PropertyEditor",
+                "SharedSettingsWidgets",
+                "SourceControl",
+                "AndroidRuntimeSettings",
+                "AndroidDeviceDetection",
+                "TargetPlatform",
+                "RenderCore",
+                "MaterialShaderQualitySettings",
+            }
 			);
 		
 		
