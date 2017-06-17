@@ -30,8 +30,8 @@ public:
 
 	}
 
-	virtual void PlayAd() 
+	virtual bool PlayAd() 
 	{
-
+		return false;
 	}
 };

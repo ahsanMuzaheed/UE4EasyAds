@@ -14,11 +14,13 @@ float UAdCollectionBPLibrary::AdCollectionSampleFunction(float Param)
 	return -1;
 }
 
-void UAdCollectionBPLibrary::PlayAdVideo(const FName& AdPlatform)
+bool UAdCollectionBPLibrary::PlayAdVideo(const FName& AdPlatform)
 {
 	IAdModuleInterface * Module = FModuleManager::Get().LoadModulePtr<IAdModuleInterface>(AdPlatform);
 	if (Module != NULL)
 	{
-		Module->PlayAd();
+		return Module->PlayAd();
 	}
+
+	return false;
 }

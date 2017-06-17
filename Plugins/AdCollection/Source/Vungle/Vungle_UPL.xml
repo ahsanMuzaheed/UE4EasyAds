@@ -110,12 +110,14 @@
           // Begin Vungle gameActivityClassAdditions
           private Vungle vungleInstance;
 
-          public void AndroidThunkJava_Vungle_PlayAd()
+          public boolean AndroidThunkJava_Vungle_PlayAd()
           {
           if (vungleInstance != null)
           {
-          vungleInstance.PlayAd();
+          return vungleInstance.PlayAd();
           }
+
+          return false;
           }
 
           // End Vungle gameActivityClassAdditions
@@ -141,13 +143,19 @@
 			<true>
 				<insert>
           // Begin Vungle onCreate
-          Log.debug("Ready Create Vungle!");
+          try
+          {
+          Log.debug("Vungle:Ready Create!");
           vungleInstance = new Vungle(this, Log);
 
           final String app_id = _bundle.getString("com.epicgames.ue4.Vungle.AppId");
 
           vungleInstance.InitVungle(app_id);
-          Log.debug("Vungle InitFinish:" + app_id);
+          Log.debug("Vungle:InitFinish:" + app_id);
+          }
+          catch (Exception e) {
+          e.printStackTrace();
+          }
 
           // End Vungle onCreate
         </insert>

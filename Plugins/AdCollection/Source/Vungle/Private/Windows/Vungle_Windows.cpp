@@ -1,6 +1,6 @@
 #include "Vungle.h"
 
-void FVungleModule::PlayAd()
+bool FVungleModule::PlayAd()
 {
-
+	return false;
 }

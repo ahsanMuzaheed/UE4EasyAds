@@ -31,5 +31,5 @@ class UAdCollectionBPLibrary : public UBlueprintFunctionLibrary
 	static float AdCollectionSampleFunction(float Param);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "PlayAdVideo", Keywords = "AdCollection Play"), Category = "AdCollection")
-	static void PlayAdVideo(const FName& AdPlatform);
+	static bool PlayAdVideo(const FName& AdPlatform);
 };

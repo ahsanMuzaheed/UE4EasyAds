@@ -44,13 +44,13 @@ public class Vungle
         // Called when the playability state changes. if isAdPlayable is true, you can now        
         // play an ad.
         // If false, you cannot yet play an ad.
-		VungleLog.debug("Vungle onAdPlayableChanged:" + isAdPlayable);
+		VungleLog.debug("Vungle: onAdPlayableChanged:" + isAdPlayable);
     }
 
     @Override
     public void onAdUnavailable(String reason) {
         // Called when VunglePub.playAd() was called, but no ad was available to play
-		VungleLog.debug("Vungle onAdUnavailable:" + reason);
+		VungleLog.debug("Vungle: onAdUnavailable:" + reason);
     }
 
   };
@@ -69,15 +69,21 @@ public class Vungle
 		vunglePub.onPause();
 	}
 
-	public void PlayAd()
+	public boolean PlayAd()
 	{
-		VungleLog.debug("play Vungle Ads" + vunglePub.isAdPlayable() );
-		vunglePub.playAd();
+		VungleLog.debug("Vungle:play Ads " + vunglePub.isAdPlayable() );
+		if(vunglePub.isAdPlayable() )
+		{
+			vunglePub.playAd();
+			return true;
+		}
+
+		return false;
 	}
 
 	public void InitVungle(final String AppId)
 	{
-		VungleLog.debug("Vungle Init:" + AppId);
+		VungleLog.debug("Vungle:Init:" + AppId);
 		vunglePub.init(activity, AppId);
 		vunglePub.setEventListeners(vungleListener);
 	}
