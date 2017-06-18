@@ -55,7 +55,7 @@ void FAdMobModule::ShowInterstitialAd(const FString adUnit)
 }
 
 
-bool FAdMobModule::PlayAd()
+void FAdMobModule::PlayAd()
 {
 	if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
 	{
@@ -65,6 +65,4 @@ bool FAdMobModule::PlayAd()
 
 		FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, PlayRewardVideoMethod);
 	}
-
-	return true;
 }

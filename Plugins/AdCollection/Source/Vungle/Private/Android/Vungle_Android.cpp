@@ -10,7 +10,7 @@ DEFINE_LOG_CATEGORY_STATIC(AdCollection, Log, All);
 
 #define CHECK_JNI_METHOD(Id) checkf(Id != nullptr, TEXT("Failed to find " #Id));
 
-bool FVungleModule::PlayAd()
+void FVungleModule::PlayAd()
 {
 	UE_LOG(AdCollection, Log, TEXT("Ready PLayAd In cpp") );
 	if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
@@ -20,10 +20,6 @@ bool FVungleModule::PlayAd()
 		CHECK_JNI_METHOD(PlayAdMethod);
 
 		// Convert scope array into java fields
-		bool ret = FJavaWrapper::CallBooleanMethod(Env, FJavaWrapper::GameActivityThis, PlayAdMethod);
-
-		return ret;
+		FJavaWrapper::CallBooleanMethod(Env, FJavaWrapper::GameActivityThis, PlayAdMethod);
 	}
-
-	return false;
 }

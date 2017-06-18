@@ -38,7 +38,7 @@ class UAdCollectionBPLibrary : public UBlueprintFunctionLibrary
 
 	
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "PlayAdVideo", Keywords = "AdCollection Play"), Category = "AdCollection")
-	static bool PlayAdVideo(EAdType adType);
+	static void PlayAdVideo(EAdType adType);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "ShowBanner", Keywords = "AdCollection Show Banner"), Category = "AdCollection")
 	static void ShowBanner(EAdType adType, const FString& adUnit, bool isOnBottom);

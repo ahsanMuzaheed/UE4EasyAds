@@ -77,14 +77,15 @@ public class AdMob {
     public void playRewardAds(String AdUnit)
     {
         Log.d(TAG, "AdMob:play rewardedvideo:" + AdUnit);
+        final String strBackUnit = AdUnit;
         if(mRewardAd == null)
         {
             mRewardAd = MobileAds.getRewardedVideoAdInstance(_activity);
-            final String strBackUnit = AdUnit;
             _activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    mRewardAd.loadAd(strBackUnit, new AdRequest.Builder().addTestDevice("D11123E2049EE9FF2D0F5B3B6D8EDEA4").build() );
+                    Log.d(TAG, "AdMob:play rewardedvideo In UI:" + strBackUnit);
+                    mRewardAd.loadAd(strBackUnit, new AdRequest.Builder().build() );
                     mRewardAd.setRewardedVideoAdListener(new RewardedVideoAdListener() {
                         @Override
                         public void onRewardedVideoAdLoaded() {
@@ -139,6 +140,10 @@ public class AdMob {
                 if(mRewardAd.isLoaded())
                 {
                     mRewardAd.show();
+                }
+                else
+                {
+                    mRewardAd.loadAd(strBackUnit, new AdRequest.Builder().addTestDevice("D11123E2049EE9FF2D0F5B3B6D8EDEA4").build() );
                 }
             }
         });

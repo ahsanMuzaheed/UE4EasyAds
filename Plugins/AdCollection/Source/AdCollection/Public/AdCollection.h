@@ -32,9 +32,8 @@ public:
 	{
 	}
 
-	virtual bool PlayAd() 
+	virtual void PlayAd() 
 	{
-		return false;
 	}
 
 	virtual void ShowInterstitialAd(const FString adUnit)

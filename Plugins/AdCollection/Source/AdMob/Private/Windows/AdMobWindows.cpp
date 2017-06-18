@@ -15,7 +15,6 @@ void FAdMobModule::ShowInterstitialAd(const FString adUnit)
 
 }
 
-bool FAdMobModule::PlayAd()
+void FAdMobModule::PlayAd()
 {
-	return true;
 }

@@ -33,15 +33,13 @@ static IAdModuleInterface* FindAdsModule(EAdType adType)
 }
 
 
-bool UAdCollectionBPLibrary::PlayAdVideo(EAdType adType)
+void UAdCollectionBPLibrary::PlayAdVideo(EAdType adType)
 {
 	IAdModuleInterface* Module = FindAdsModule(adType);
 	if (Module != NULL)
 	{
-		return Module->PlayAd();
+		Module->PlayAd();
 	}
-
-	return false;
 }
 
 
