@@ -28,6 +28,11 @@
       "Name": "AdCollectionEditor",
       "Type": "Editor",
       "LoadingPhase": "Default"
+    },
+    {
+      "Name": "AdMob",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
     }
   ]
 }

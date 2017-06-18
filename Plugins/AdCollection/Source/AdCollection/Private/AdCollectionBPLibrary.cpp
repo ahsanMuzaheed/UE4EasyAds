@@ -14,9 +14,25 @@ float UAdCollectionBPLibrary::AdCollectionSampleFunction(float Param)
 	return -1;
 }
 
-bool UAdCollectionBPLibrary::PlayAdVideo(const FName& AdPlatform)
+bool UAdCollectionBPLibrary::PlayAdVideo(EAdType adType)
 {
-	IAdModuleInterface * Module = FModuleManager::Get().LoadModulePtr<IAdModuleInterface>(AdPlatform);
+	const UEnum* EnumPtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("EAdType"), true);
+	if (!EnumPtr) return false;
+
+	FString EnumName = EnumPtr->GetNameByValue((int64)adType).ToString();
+
+	FName adPlatformName;
+	int32 ScopeIndex = EnumName.Find(TEXT("::"), ESearchCase::CaseSensitive);
+	if (ScopeIndex != INDEX_NONE)
+	{
+		adPlatformName = FName(*EnumName.Mid(ScopeIndex + 2));
+	}
+	else
+	{
+		adPlatformName = FName(*EnumName);
+	}
+
+	IAdModuleInterface * Module = FModuleManager::Get().LoadModulePtr<IAdModuleInterface>(adPlatformName);
 	if (Module != NULL)
 	{
 		return Module->PlayAd();

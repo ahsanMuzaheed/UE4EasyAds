@@ -22,6 +22,15 @@
 *	For more info on custom blueprint nodes visit documentation:
 *	https://wiki.unrealengine.com/Custom_Blueprint_Node_Creation
 */
+
+UENUM(BlueprintType)		//"BlueprintType" is essential to include
+enum class EAdType : uint8
+{
+	Vungle 	UMETA(DisplayName = "Vungle"),
+	AdMob 	UMETA(DisplayName = "AdMob")
+};
+
+
 UCLASS()
 class UAdCollectionBPLibrary : public UBlueprintFunctionLibrary
 {
@@ -31,5 +40,5 @@ class UAdCollectionBPLibrary : public UBlueprintFunctionLibrary
 	static float AdCollectionSampleFunction(float Param);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "PlayAdVideo", Keywords = "AdCollection Play"), Category = "AdCollection")
-	static bool PlayAdVideo(const FName& AdPlatform);
+	static bool PlayAdVideo(EAdType adType);
 };
