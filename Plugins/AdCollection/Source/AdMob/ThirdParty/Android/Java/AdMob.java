@@ -77,7 +77,7 @@ public class AdMob {
         // request an ad if we don't have one available or requested, but would like one
         if (adWantsToBeShown && !adIsAvailable && !adIsRequested && loadIfNeeded)
         {
-            AdRequest adRequest = new AdRequest.Builder().build();		// add test devices here
+            AdRequest adRequest = new AdRequest.Builder().addTestDevice("D11123E2049EE9FF2D0F5B3B6D8EDEA4").build();		// add test devices here
             adView.loadAd(adRequest);
 
             adIsRequested = true;
@@ -143,7 +143,7 @@ public class AdMob {
                 @Override
                 public void run()
                 {
-                    mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                    mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice("D11123E2049EE9FF2D0F5B3B6D8EDEA4").build());
                 }
             });
 
@@ -151,7 +151,7 @@ public class AdMob {
                 @Override
                 public void onAdClosed() {
                     // Load the next interstitial.
-                    mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                    mInterstitialAd.loadAd(new AdRequest.Builder().addTestDevice("D11123E2049EE9FF2D0F5B3B6D8EDEA4").build());
                 }
 
                 @Override
