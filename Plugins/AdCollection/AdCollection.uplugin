@@ -32,7 +32,7 @@
     {
       "Name": "AdMob",
       "Type": "Runtime",
-      "LoadingPhase": "Default"
+      "LoadingPhase": "PreLoadingScreen"
     }
   ]
 }
