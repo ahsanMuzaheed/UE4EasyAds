@@ -18,6 +18,9 @@ class UAdMobAndroidSetting : public UObject
 
 	UPROPERTY(GlobalConfig, EditAnywhere, Category = Android, Meta = (DisplayName = "AdMob AppID"))
 		FString AppId;
+
+	UPROPERTY(GlobalConfig, EditAnywhere, Category = Android, Meta = (DisplayName = "AdMob RewardVideo AdUnit"))
+	FString RewardedVideoAdUnit;
 	
 #if WITH_EDITOR
 		// UObject interface

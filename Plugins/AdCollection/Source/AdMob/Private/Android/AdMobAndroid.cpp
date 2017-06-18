@@ -37,6 +37,8 @@ void FAdMobModule::HideBanner()
 	}
 }
 
+//AndroidThunkJava_AdMob_PlayRewardedVideo
+
 void FAdMobModule::ShowInterstitialAd(const FString adUnit)
 {
 	//AndroidThunkJava_AdMob_ShowInterstitialAd
@@ -50,4 +52,19 @@ void FAdMobModule::ShowInterstitialAd(const FString adUnit)
 		jstring AdUnitIDArg = Env->NewStringUTF(TCHAR_TO_UTF8(*adUnit));
 		FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, ShowInterstitialMethod, AdUnitIDArg);
 	}
+}
+
+
+bool FAdMobModule::PlayAd()
+{
+	if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
+	{
+		const bool bIsOptional = false;
+		static jmethodID PlayRewardVideoMethod = FJavaWrapper::FindMethod(Env, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_AdMob_PlayRewardedVideo", "()V", bIsOptional);
+		CHECK_JNI_METHOD(PlayRewardVideoMethod);
+
+		FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, PlayRewardVideoMethod);
+	}
+
+	return true;
 }

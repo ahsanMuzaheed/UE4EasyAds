@@ -13,5 +13,6 @@ public:
 	virtual void ShutdownModule() override;
 	virtual void ShowBanner(const FString adUnit, enAdsBannerPos pos) override;
 	virtual void HideBanner() override;
+	virtual bool PlayAd() override;
 	virtual void ShowInterstitialAd(const FString adUnit) override;
 };

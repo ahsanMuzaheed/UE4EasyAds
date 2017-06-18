@@ -27,6 +27,9 @@ import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
 import static com.google.android.gms.internal.zzs.TAG;
 //import java.util.Set;
@@ -54,6 +57,9 @@ public class AdMob {
     private InterstitialAd mInterstitialAd;
     private  boolean mInterstitialLoaded = false;
 
+    private RewardedVideoAd mRewardAd;
+    private boolean mRewardedVideoLoaded = false;
+
     public AdMob(Activity activity, LinearLayout mainLayout)
     {
         _activity = activity;
@@ -62,9 +68,104 @@ public class AdMob {
         Log.d(TAG, "Admob:Init");
     }
 
+
     public void InitAdMob(String AppId)
     {
         MobileAds.initialize(_activity, AppId);
+    }
+
+    public void playRewardAds(String AdUnit)
+    {
+        Log.d(TAG, "AdMob:play rewardedvideo:" + AdUnit);
+        if(mRewardAd == null)
+        {
+            mRewardAd = MobileAds.getRewardedVideoAdInstance(_activity);
+            final String strBackUnit = AdUnit;
+            _activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mRewardAd.loadAd(strBackUnit, new AdRequest.Builder().addTestDevice("D11123E2049EE9FF2D0F5B3B6D8EDEA4").build() );
+                    mRewardAd.setRewardedVideoAdListener(new RewardedVideoAdListener() {
+                        @Override
+                        public void onRewardedVideoAdLoaded() {
+                            Log.d(TAG, "AdMob:ReeardedVideo Loaded Success");
+
+                            if(!mRewardedVideoLoaded)
+                            {
+                                mRewardedVideoLoaded = true;
+                                mRewardAd.show();
+                            }
+                        }
+
+                        @Override
+                        public void onRewardedVideoAdOpened() {
+
+                        }
+
+                        @Override
+                        public void onRewardedVideoStarted() {
+
+                        }
+
+                        @Override
+                        public void onRewardedVideoAdClosed() {
+
+                        }
+
+                        @Override
+                        public void onRewarded(RewardItem rewardItem) {
+                            Log.d(TAG, "AdMob:ReeardedVideo Rewarded");
+                        }
+
+                        @Override
+                        public void onRewardedVideoAdLeftApplication() {
+
+                        }
+
+                        @Override
+                        public void onRewardedVideoAdFailedToLoad(int i) {
+                            Log.d(TAG, "AdMob:ReeardedVideo Fail Loads");
+                        }
+                    });
+                }
+            });
+
+            return;
+        }
+
+        _activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(mRewardAd.isLoaded())
+                {
+                    mRewardAd.show();
+                }
+            }
+        });
+    }
+
+    public  void OnPause()
+    {
+        if(mRewardAd != null)
+        {
+            mRewardAd.pause(_activity);
+        }
+    }
+
+    public  void OnResume()
+    {
+        if(mRewardAd != null)
+        {
+            mRewardAd.resume(_activity);
+        }
+    }
+
+    public  void OnDestroy()
+    {
+        if(mRewardAd != null)
+        {
+            mRewardAd.destroy(_activity);
+        }
     }
 
     private void updateAdVisibility(boolean loadIfNeeded)

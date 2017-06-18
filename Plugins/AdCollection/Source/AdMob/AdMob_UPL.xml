@@ -8,6 +8,7 @@
 		<!-- get packaging for Admob from ini and reset it if architecture not supported -->
 		<setBoolFromProperty result="bEnabled" ini="Engine" section="/Script/AdCollectionEditor.AdmobAndroidSetting" property="bEnabled" default="false"/>
 		<setStringFromProperty result="AppId" ini="Engine" section="/Script/AdCollectionEditor.AdmobAndroidSetting" property="AppId" default="0"/>
+    <setStringFromProperty result="RewardedVideoAdUnit" ini="Engine" section="/Script/AdCollectionEditor.AdmobAndroidSetting" property="RewardedVideoAdUnit" default="0"/>
 		<dumpvars/>
 	</init>
 	
@@ -55,8 +56,15 @@
         <addAttribute tag="$AppIdMetadata" name="android:name" value="com.epicgames.ue4.AdMob.AppId"/>
         <addAttribute tag="$AppIdMetadata" name="android:value" value="$S(AppId)"/>
         <addElement tag="application" name="AppIdMetadata"/>
+
+
+        <setElement result="RewardedVideoMetadata" value="meta-data"/>
+        <addAttribute tag="$RewardedVideoMetadata" name="android:name" value="com.epicgames.ue4.AdMob.RewardedVideoAdUnit"/>
+        <addAttribute tag="$RewardedVideoMetadata" name="android:value" value="$S(RewardedVideoAdUnit)"/>
+        <addElement tag="application" name="RewardedVideoMetadata"/>
         
-				<!-- Add permissions -->
+
+        <!-- Add permissions -->
 				<addPermission android:name="android.permission.INTERNET" />
         <addPermission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
         <addPermission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -101,6 +109,15 @@
           if (adMobInstance != null)
           {
           adMobInstance.ShowBanner(adUnit,bShowOnBottomOfScreen );
+          }
+          }
+
+          public void AndroidThunkJava_AdMob_PlayRewardedVideo()
+          {
+          if (adMobInstance != null)
+          {
+          final String adUnit = _bundle.getString("com.epicgames.ue4.AdMob.RewardedVideoAdUnit");
+          adMobInstance.playRewardAds(adUnit);
           }
           }
 
@@ -169,10 +186,10 @@
 			<true>
 				<insert>
           // Begin AdMob onDestroy
-          //if (adMobInstance != null)
-          //{
-          //  adMobInstance = null;
-          //}
+          if (adMobInstance != null)
+          {
+          adMobInstance.OnDestroy();
+          }
           // End AdMob onDestroy
         </insert>
 			</true>
@@ -209,7 +226,10 @@
 			<true>
 				<insert>
           // Begin AdMob onPause
-         
+          if (adMobInstance != null)
+          {
+          adMobInstance.OnPause();
+          }
           // End AdMob onPause
         </insert>
 			</true>
@@ -222,7 +242,10 @@
 			<true>
 				<insert>
           // Begin AdMob onResume
-        
+          if (adMobInstance != null)
+          {
+          adMobInstance.OnResume();
+          }
           // End AdMob onResume
         </insert>
 			</true>
