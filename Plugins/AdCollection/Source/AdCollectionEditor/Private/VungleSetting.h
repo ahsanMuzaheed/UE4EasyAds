@@ -9,15 +9,15 @@
  * 
  */
 UCLASS(config = Engine, globaluserconfig)
-class UVungleSetting : public UObject
+class UVungleAndroidSetting : public UObject
 {
 	GENERATED_BODY()
 	
 	
-		UPROPERTY(GlobalConfig, EditAnywhere, Category = VungleConfig, Meta = (DisplayName = "If Is Vungle Enable"))
+		UPROPERTY(GlobalConfig, EditAnywhere, Category = Android, Meta = (DisplayName = "If Is Vungle Enable"))
 		bool bEnabled;
 
-	UPROPERTY(GlobalConfig, EditAnywhere, Category = VungleConfig, Meta = (DisplayName = "Vungle AppID"))
+	UPROPERTY(GlobalConfig, EditAnywhere, Category = Android, Meta = (DisplayName = "Vungle AppID"))
 		FString AppId;
 
 

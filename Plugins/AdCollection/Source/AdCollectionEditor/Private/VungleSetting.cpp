@@ -7,7 +7,7 @@
 
 
 #if WITH_EDITOR
-void UVungleSetting::PostEditChangeProperty(struct FPropertyChangedEvent& PropertyChangedEvent)
+void UVungleAndroidSetting::PostEditChangeProperty(struct FPropertyChangedEvent& PropertyChangedEvent)
 {
 	Super::PostEditChangeProperty(PropertyChangedEvent);
 	SaveConfig();

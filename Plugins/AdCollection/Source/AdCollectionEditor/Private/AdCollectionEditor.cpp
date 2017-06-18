@@ -5,11 +5,8 @@
 #include "SlateBasics.h"
 #include "SlateExtras.h"
 #include "PropertyEditorModule.h"
-//#include "AdCollectionEditorStyle.h"
-//#include "AdCollectionEditorCommands.h"
 #include "VungleSetting.h"
 #include "ISettingsModule.h"
-#include "VungleSettingsCustomization.h"
 
 #include "LevelEditor.h"
 
@@ -19,13 +16,6 @@ static const FName AdCollectionEditorTabName("AdCollectionEditor");
 
 void FAdCollectionEditorModule::StartupModule()
 {
-	FPropertyEditorModule& PropertyModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
-
-	PropertyModule.RegisterCustomClassLayout(
-		UVungleSetting::StaticClass()->GetFName(),
-		FOnGetDetailCustomizationInstance::CreateStatic(&FVungleSettingsCustomization::MakeInstance)
-	);
-
 	ISettingsModule* SettingsModule = FModuleManager::GetModulePtr<ISettingsModule>("Settings");
 
 	if (SettingsModule != nullptr)
@@ -34,7 +24,7 @@ void FAdCollectionEditorModule::StartupModule()
 		SettingsModule->RegisterSettings("Project", "AdCollection", "Vungle",
 			LOCTEXT("AdCollection", "Vungle"),
 			LOCTEXT("AdCollection", "Settings for Vungle"),
-			GetMutableDefault<UVungleSetting>()
+			GetMutableDefault<UVungleAndroidSetting>()
 		);
 	}
 }
