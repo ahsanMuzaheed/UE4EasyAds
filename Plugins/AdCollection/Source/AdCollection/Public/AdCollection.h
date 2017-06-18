@@ -16,7 +16,6 @@ public:
 enum enAdsBannerPos
 {
 	enAdsBannerPos_Top = 0,
-	enAdsBannerPos_Center,
 	enAdsBannerPos_Bottom,
 };
 
@@ -27,11 +26,16 @@ public:
 
 	virtual void ShowBanner(const FString adUnit, enAdsBannerPos pos)
 	{
+	}
 
+	virtual void HideBanner()
+	{
 	}
 
 	virtual bool PlayAd() 
 	{
 		return false;
 	}
+
+	
 };

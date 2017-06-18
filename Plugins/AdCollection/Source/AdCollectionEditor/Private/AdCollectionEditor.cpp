@@ -6,6 +6,7 @@
 #include "SlateExtras.h"
 #include "PropertyEditorModule.h"
 #include "VungleSetting.h"
+#include "AdMobSetting.h"
 #include "ISettingsModule.h"
 
 #include "LevelEditor.h"
@@ -21,10 +22,17 @@ void FAdCollectionEditorModule::StartupModule()
 	if (SettingsModule != nullptr)
 	{
 		
-		SettingsModule->RegisterSettings("Project", "AdCollection", "Vungle",
-			LOCTEXT("AdCollection", "Vungle"),
-			LOCTEXT("AdCollection", "Settings for Vungle"),
+		SettingsModule->RegisterSettings(TEXT("Project"), TEXT("AdCollection"), TEXT("Vungle"),
+			LOCTEXT("Vungle", "Vungle"),
+			LOCTEXT("Vungle", "Settings for Vungle"),
 			GetMutableDefault<UVungleAndroidSetting>()
+		);
+
+
+		SettingsModule->RegisterSettings(TEXT("Project"), TEXT("AdCollection"), TEXT("AdMob"),
+			LOCTEXT("AdMob", "AdMob"),
+			LOCTEXT("AdMob", "Settings for AdMob"),
+			GetMutableDefault<UAdMobAndroidSetting>()
 		);
 	}
 }

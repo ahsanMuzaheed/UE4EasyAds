@@ -1,8 +1,11 @@
 #include "AdMob.h"
 
 
-
-bool FAdMobModule::PlayAd()
+void FAdMobModule::ShowBanner(const FString adUnit, enAdsBannerPos pos)
 {
-	return false;
+}
+
+void FAdMobModule::HideBanner()
+{
+
 }

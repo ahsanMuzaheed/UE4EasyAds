@@ -36,9 +36,13 @@ class UAdCollectionBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
 
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "AdCollectionSampleFunction", Keywords = "AdCollection sample test testing"), Category = "AdCollectionTesting")
-	static float AdCollectionSampleFunction(float Param);
-
+	
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "PlayAdVideo", Keywords = "AdCollection Play"), Category = "AdCollection")
 	static bool PlayAdVideo(EAdType adType);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "ShowBanner", Keywords = "AdCollection Show Banner"), Category = "AdCollection")
+	static void ShowBanner(EAdType adType, const FString& adUnit, bool isOnBottom);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "HideBanner", Keywords = "AdCollection Hide Banner"), Category = "AdCollection")
+	static void HideBanner(EAdType adType);
 };

@@ -9,15 +9,10 @@ UAdCollectionBPLibrary::UAdCollectionBPLibrary(const FObjectInitializer& ObjectI
 
 }
 
-float UAdCollectionBPLibrary::AdCollectionSampleFunction(float Param)
-{
-	return -1;
-}
-
-bool UAdCollectionBPLibrary::PlayAdVideo(EAdType adType)
+static IAdModuleInterface* FindAdsModule(EAdType adType)
 {
 	const UEnum* EnumPtr = FindObject<UEnum>(ANY_PACKAGE, TEXT("EAdType"), true);
-	if (!EnumPtr) return false;
+	if (!EnumPtr) return nullptr;
 
 	FString EnumName = EnumPtr->GetNameByValue((int64)adType).ToString();
 
@@ -33,10 +28,41 @@ bool UAdCollectionBPLibrary::PlayAdVideo(EAdType adType)
 	}
 
 	IAdModuleInterface * Module = FModuleManager::Get().LoadModulePtr<IAdModuleInterface>(adPlatformName);
+
+	return Module;
+}
+
+
+bool UAdCollectionBPLibrary::PlayAdVideo(EAdType adType)
+{
+	IAdModuleInterface* Module = FindAdsModule(adType);
 	if (Module != NULL)
 	{
 		return Module->PlayAd();
 	}
 
 	return false;
+}
+
+
+
+void UAdCollectionBPLibrary::ShowBanner(EAdType adType, const FString& adUnit, bool isOnBottom)
+{
+	IAdModuleInterface* Module = FindAdsModule(adType);
+	if (Module != NULL)
+	{
+		enAdsBannerPos pos = enAdsBannerPos::enAdsBannerPos_Bottom;
+		if (!isOnBottom) pos = enAdsBannerPos::enAdsBannerPos_Top;
+		return Module->ShowBanner(adUnit, pos);
+	}
+}
+
+
+void UAdCollectionBPLibrary::HideBanner(EAdType adType)
+{
+	IAdModuleInterface* Module = FindAdsModule(adType);
+	if (Module != NULL)
+	{
+		Module->HideBanner();
+	}
 }
