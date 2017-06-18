@@ -27,7 +27,8 @@ UENUM(BlueprintType)		//"BlueprintType" is essential to include
 enum class EAdType : uint8
 {
 	Vungle 	UMETA(DisplayName = "Vungle"),
-	AdMob 	UMETA(DisplayName = "AdMob")
+	AdMob 	UMETA(DisplayName = "AdMob"),
+	Unity 	UMETA(DisplayName = "Unity")
 };
 
 

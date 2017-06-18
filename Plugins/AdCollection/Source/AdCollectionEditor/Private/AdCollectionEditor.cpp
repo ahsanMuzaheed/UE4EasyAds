@@ -7,6 +7,7 @@
 #include "PropertyEditorModule.h"
 #include "VungleSetting.h"
 #include "AdMobSetting.h"
+#include "UnitySetting.h"
 #include "ISettingsModule.h"
 
 #include "LevelEditor.h"
@@ -33,6 +34,12 @@ void FAdCollectionEditorModule::StartupModule()
 			LOCTEXT("AdMob", "AdMob"),
 			LOCTEXT("AdMob", "Settings for AdMob"),
 			GetMutableDefault<UAdMobAndroidSetting>()
+		);
+
+		SettingsModule->RegisterSettings(TEXT("Project"), TEXT("AdCollection"), TEXT("Unity"),
+			LOCTEXT("Unity", "Unity"),
+			LOCTEXT("Unity", "Settings for Unity"),
+			GetMutableDefault<UUnityAndroidSetting>()
 		);
 	}
 }

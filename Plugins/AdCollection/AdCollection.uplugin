@@ -33,6 +33,11 @@
       "Name": "AdMob",
       "Type": "Runtime",
       "LoadingPhase": "PreLoadingScreen"
+    },
+    {
+      "Name": "Unity",
+      "Type": "Runtime",
+      "LoadingPhase": "PreLoadingScreen"
     }
   ]
 }
