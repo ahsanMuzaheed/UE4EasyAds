@@ -45,4 +45,7 @@ class UAdCollectionBPLibrary : public UBlueprintFunctionLibrary
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "HideBanner", Keywords = "AdCollection Hide Banner"), Category = "AdCollection")
 	static void HideBanner(EAdType adType);
+
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "ShowInterstitial", Keywords = "AdCollection Show Interstitial Ads"), Category = "AdCollection")
+	static void ShowInterstitial(EAdType adType, const FString& adUnit);
 };

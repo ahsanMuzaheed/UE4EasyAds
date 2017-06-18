@@ -1,6 +1,7 @@
 /**
  * Created by feixu on 2017/6/18.
  */
+
 package com.epicgames.ue4;
 
 //import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 
 import static com.google.android.gms.internal.zzs.TAG;
@@ -49,7 +51,8 @@ public class AdMob {
     /** true when an ad request is in flight */
     private boolean adIsRequested = false;
 
-
+    private InterstitialAd mInterstitialAd;
+    private  boolean mInterstitialLoaded = false;
 
     public AdMob(Activity activity, LinearLayout mainLayout)
     {
@@ -106,7 +109,7 @@ public class AdMob {
         }
     }
 
-	public void HideAdBanner()
+    public void HideAdBanner()
     {
         Log.d(TAG, "In AndroidThunkJava_HideAdBanner");
 
@@ -126,11 +129,62 @@ public class AdMob {
         });
     }
 
-    public  void ShowBanner(String AdMobAdUnitID, boolean bShowOnBottomOfScreen)
+    public  void ShowInterstitialAd(String AdMobAdUnitID)
     {
-        Log.d(TAG, "Admob:AdUnit: " + AdMobAdUnitID);
+        Log.d(TAG, "Admob:ShowInterstitialAd AdUnit: " + AdMobAdUnitID);
 
-        adGravity = bShowOnBottomOfScreen ? Gravity.BOTTOM : Gravity.TOP;
+        if(mInterstitialAd == null)
+        {
+            mInterstitialAd = new InterstitialAd(_activity);
+            mInterstitialAd.setAdUnitId(AdMobAdUnitID);
+
+            _activity.runOnUiThread(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                }
+            });
+
+            mInterstitialAd.setAdListener(new AdListener() {
+                @Override
+                public void onAdClosed() {
+                    // Load the next interstitial.
+                    mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                }
+
+                @Override
+                public void onAdLoaded()
+                {
+                    Log.d(TAG, "AdMob:Interstitial Ads Loaded Success");
+                    if(!mInterstitialLoaded)
+                    {
+                        mInterstitialLoaded = true;
+                        mInterstitialAd.show();
+                    }
+                }
+            });
+
+            return;
+        }
+
+        _activity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(mInterstitialAd.isLoaded() )
+                {
+                    mInterstitialAd.show();
+                }
+            }
+        });
+    }
+
+    public  void ShowBanner(String AdMobAdUnitID, boolean bShowOnBottonOfScreen)
+    {
+        Log.d(TAG, "Admob:ShowBanner AdUnit: " + AdMobAdUnitID);
+
+        adGravity = bShowOnBottonOfScreen ? Gravity.BOTTOM : Gravity.TOP;
 
         if (adInit)
         {
@@ -196,7 +250,7 @@ public class AdMob {
                         {
                             adIsAvailable = true;
                             adIsRequested = false;
-
+                            Log.d(TAG, "AdMob:" + "AdMob Banner Loaded");
                             updateAdVisibility(true);
                         }
 
@@ -206,6 +260,7 @@ public class AdMob {
                             adIsAvailable = false;
                             adIsRequested = false;
 
+                            Log.d(TAG, "AdMob:" + "AdMob Banner Load Fail:" + errorCode);
                             // don't immediately request a new ad on failure, wait until the next show
                             updateAdVisibility(false);
                         }

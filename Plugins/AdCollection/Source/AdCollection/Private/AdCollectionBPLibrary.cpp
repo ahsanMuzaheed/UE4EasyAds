@@ -58,6 +58,16 @@ void UAdCollectionBPLibrary::ShowBanner(EAdType adType, const FString& adUnit, b
 }
 
 
+void UAdCollectionBPLibrary::ShowInterstitial(EAdType adType, const FString& adUnit)
+{
+	IAdModuleInterface* Module = FindAdsModule(adType);
+	if (Module != NULL)
+	{
+		return Module->ShowInterstitialAd(adUnit);
+	}
+}
+
+
 void UAdCollectionBPLibrary::HideBanner(EAdType adType)
 {
 	IAdModuleInterface* Module = FindAdsModule(adType);

@@ -36,3 +36,18 @@ void FAdMobModule::HideBanner()
 		FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, HideBannerMethod);
 	}
 }
+
+void FAdMobModule::ShowInterstitialAd(const FString adUnit)
+{
+	//AndroidThunkJava_AdMob_ShowInterstitialAd
+	if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
+	{
+		const bool bIsOptional = false;
+		static jmethodID ShowInterstitialMethod = FJavaWrapper::FindMethod(Env, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_AdMob_ShowInterstitialAd", "(Ljava/lang/String;)V", bIsOptional);
+		CHECK_JNI_METHOD(ShowInterstitialMethod);
+
+		// Convert scope array into java fields
+		jstring AdUnitIDArg = Env->NewStringUTF(TCHAR_TO_UTF8(*adUnit));
+		FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, ShowInterstitialMethod, AdUnitIDArg);
+	}
+}

@@ -98,15 +98,26 @@
 
           public void AndroidThunkJava_AdMob_ShowBanner(String adUnit, boolean bShowOnBottomOfScreen)
           {
-            if (adMobInstance != null)
-            {
-              adMobInstance.ShowBanner(adUnit,bShowOnBottomOfScreen );
-            }
+          if (adMobInstance != null)
+          {
+          adMobInstance.ShowBanner(adUnit,bShowOnBottomOfScreen );
+          }
+          }
+
+          public void AndroidThunkJava_AdMob_ShowInterstitialAd(String adUnit)
+          {
+          if (adMobInstance != null)
+          {
+          adMobInstance.ShowInterstitialAd(adUnit);
+          }
           }
 
           public void AndroidThunkJava_AdMob_HideBanner()
           {
+          if (adMobInstance != null)
+          {
           adMobInstance.HideAdBanner();
+          }
           }
 
           // End AdMob gameActivityClassAdditions

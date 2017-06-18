@@ -37,5 +37,8 @@ public:
 		return false;
 	}
 
-	
+	virtual void ShowInterstitialAd(const FString adUnit)
+	{
+
+	}
 };

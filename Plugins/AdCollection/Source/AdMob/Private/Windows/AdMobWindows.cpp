@@ -9,3 +9,8 @@ void FAdMobModule::HideBanner()
 {
 
 }
+
+void FAdMobModule::ShowInterstitialAd(const FString adUnit)
+{
+
+}
