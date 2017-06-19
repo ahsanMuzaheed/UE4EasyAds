@@ -62,7 +62,13 @@
         <addAttribute tag="$RewardedVideoMetadata" name="android:name" value="com.epicgames.ue4.AdMob.RewardedVideoAdUnit"/>
         <addAttribute tag="$RewardedVideoMetadata" name="android:value" value="$S(RewardedVideoAdUnit)"/>
         <addElement tag="application" name="RewardedVideoMetadata"/>
-        
+
+
+        <setElement result="AdActivity" value="activity"/>
+        <addAttribute tag="$AdActivity" name="android:name" value="com.google.android.gms.ads.AdActivity"/>
+        <addAttribute tag="$AdActivity" name="android:configChanges" value="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+        <addAttribute tag="$AdActivity" name="android:theme" value="@android:style/Theme.Translucent"/>
+        <addElement tag="application" name="AdActivity"/>
 
         <!-- Add permissions -->
 				<addPermission android:name="android.permission.INTERNET" />
