@@ -8,6 +8,7 @@
 #include "VungleSetting.h"
 #include "AdMobSetting.h"
 #include "UnitySetting.h"
+#include "ChartBoostSetting.h"
 #include "ISettingsModule.h"
 
 #include "LevelEditor.h"
@@ -41,6 +42,14 @@ void FAdCollectionEditorModule::StartupModule()
 			LOCTEXT("Unity", "Settings for Unity"),
 			GetMutableDefault<UUnityAndroidSetting>()
 		);
+
+
+		SettingsModule->RegisterSettings(TEXT("Project"), TEXT("AdCollection"), TEXT("ChartBoost"),
+			LOCTEXT("ChartBoost", "ChartBoost"),
+			LOCTEXT("ChartBoost", "Settings for ChartBoost"),
+			GetMutableDefault<UChartBoostAndroidSetting>()
+		);
+		
 	}
 }
 

@@ -38,6 +38,11 @@
       "Name": "Unity",
       "Type": "Runtime",
       "LoadingPhase": "PreLoadingScreen"
+    },
+    {
+      "Name": "ChartBoost",
+      "Type": "Runtime",
+      "LoadingPhase": "PreLoadingScreen"
     }
   ]
 }
