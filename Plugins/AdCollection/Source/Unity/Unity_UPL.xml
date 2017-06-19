@@ -99,7 +99,7 @@
 			<true>
 				<insert>
           // Unity imports
-          //import com.google.android.gms.ads.MobileAds;
+          import com.ads.util.Unity;
         </insert>
 			</true>
 		</if>

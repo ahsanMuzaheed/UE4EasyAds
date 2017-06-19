@@ -1,5 +1,5 @@
 // Some copyright should be here...
-
+using System.IO;
 using UnrealBuildTool;
 
 public class AdCollection : ModuleRules
@@ -54,5 +54,11 @@ public class AdCollection : ModuleRules
 				// ... add any modules that your module loads dynamically here ...
 			}
 			);
-	}
+
+        if (Target.Platform == UnrealTargetPlatform.Android)
+        {
+            string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, BuildConfiguration.RelativeEnginePath);
+            AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "AdCollection_UPL.xml")));
+        }
+    }
 }

@@ -25,6 +25,7 @@
 			</true>
 		</if>
 
+    <!-- 
     <if condition="bEnabled">
       <true>
         <log text="Copying Vungle Libs files to staging"/>
@@ -32,6 +33,7 @@
 					dst = "$S(BuildDir)/libs" />
       </true>
     </if>
+    -->
 	</prebuildCopies>
 	
 	<!-- AAR dependencies -->
@@ -96,7 +98,7 @@
 			<true>
 				<insert>
           // Vungle imports
-          //import com.vungle.publisher.VunglePub;
+          import com.ads.util.Vungle;
         </insert>
 			</true>
 		</if>
@@ -146,7 +148,7 @@
           try
           {
           Log.debug("Vungle:Ready Create!");
-          vungleInstance = new Vungle(this, Log);
+          vungleInstance = new Vungle(this);
 
           final String app_id = _bundle.getString("com.epicgames.ue4.Vungle.AppId");
 
