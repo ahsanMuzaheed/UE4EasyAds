@@ -8,7 +8,7 @@
 
 DEFINE_LOG_CATEGORY_STATIC(AdCollection, Log, All);
 
-#define CHECK_JNI_METHOD(Id) checkf(Id != nullptr, TEXT("Failed to find " #Id));
+//#define CHECK_JNI_METHOD(Id) checkf(Id != nullptr, TEXT("Failed to find " #Id));
 
 void FUnityModule::PlayAd()
 {
@@ -16,7 +16,13 @@ void FUnityModule::PlayAd()
 	{
 		const bool bIsOptional = false;
 		static jmethodID PlayRewardVideoMethod = FJavaWrapper::FindMethod(Env, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_Unity_PlayRewardedVideo", "()V", bIsOptional);
-		CHECK_JNI_METHOD(PlayRewardVideoMethod);
+		//CHECK_JNI_METHOD(PlayRewardVideoMethod);
+
+		if (PlayRewardVideoMethod == nullptr)
+		{
+			UE_LOG(AdCollection, Error, TEXT("AndroidThunkJava_ChartBoost_ShowInterstitialAds not found"));
+			return;
+		}
 
 		FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, PlayRewardVideoMethod);
 	}

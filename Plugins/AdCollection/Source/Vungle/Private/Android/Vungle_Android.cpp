@@ -8,7 +8,7 @@
 
 DEFINE_LOG_CATEGORY_STATIC(AdCollection, Log, All);
 
-#define CHECK_JNI_METHOD(Id) checkf(Id != nullptr, TEXT("Failed to find " #Id));
+//#define CHECK_JNI_METHOD(Id) checkf(Id != nullptr, TEXT("Failed to find " #Id));
 
 void FVungleModule::PlayAd()
 {
@@ -17,7 +17,12 @@ void FVungleModule::PlayAd()
 	{
 		const bool bIsOptional = false;
 		static jmethodID PlayAdMethod = FJavaWrapper::FindMethod(Env, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_Vungle_PlayAd", "()Z", bIsOptional);
-		CHECK_JNI_METHOD(PlayAdMethod);
+		//CHECK_JNI_METHOD(PlayAdMethod);
+		if (PlayAdMethod == nullptr)
+		{
+			UE_LOG(AdCollection, Error, TEXT("AndroidThunkJava_Vungle_PlayAd not found"));
+			return;
+		}
 
 		// Convert scope array into java fields
 		FJavaWrapper::CallBooleanMethod(Env, FJavaWrapper::GameActivityThis, PlayAdMethod);

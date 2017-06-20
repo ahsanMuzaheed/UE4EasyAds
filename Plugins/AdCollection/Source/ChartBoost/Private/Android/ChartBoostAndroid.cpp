@@ -15,19 +15,29 @@ void FChartBoostModule::PlayAd()
 	{
 		const bool bIsOptional = false;
 		static jmethodID PlayRewardVideoMethod = FJavaWrapper::FindMethod(Env, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_ChartBoost_PlayRewardedVideo", "()V", bIsOptional);
-		if (PlayRewardVideoMethod == nullptr) return;
+		if (PlayRewardVideoMethod == nullptr)
+		{
+			UE_LOG(AdCollection, Error, TEXT("AndroidThunkJava_ChartBoost_PlayRewardedVideo not found"));
+			return;
+		}
 
 		FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, PlayRewardVideoMethod);
 	}
 }
 
-void FChartBoostModule::ShowInterstitialAd(const FString adUnit)
+void FChartBoostModule::ShowInterstitialAd()
 {
 	if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
 	{
 		const bool bIsOptional = false;
 		static jmethodID ShowInterstitialMethod = FJavaWrapper::FindMethod(Env, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_ChartBoost_ShowInterstitialAds", "()V", bIsOptional);
-		if (ShowInterstitialMethod == nullptr) return;
+		//if (ShowInterstitialMethod == nullptr) return;
+
+		if (ShowInterstitialMethod == nullptr)
+		{
+			UE_LOG(AdCollection, Error, TEXT("AndroidThunkJava_ChartBoost_ShowInterstitialAds not found"));
+			return;
+		}
 		
 		FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, ShowInterstitialMethod);
 	}

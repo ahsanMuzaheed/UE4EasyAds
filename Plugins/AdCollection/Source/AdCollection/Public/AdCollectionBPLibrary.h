@@ -43,11 +43,11 @@ class UAdCollectionBPLibrary : public UBlueprintFunctionLibrary
 	static void PlayAdVideo(EAdType adType);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "ShowBanner", Keywords = "AdCollection Show Banner"), Category = "AdCollection")
-	static void ShowBanner(EAdType adType, const FString& adUnit, bool isOnBottom);
+	static void ShowBanner(EAdType adType, bool isOnBottom);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "HideBanner", Keywords = "AdCollection Hide Banner"), Category = "AdCollection")
 	static void HideBanner(EAdType adType);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "ShowInterstitial", Keywords = "AdCollection Show Interstitial Ads"), Category = "AdCollection")
-	static void ShowInterstitial(EAdType adType, const FString& adUnit);
+	static void ShowInterstitial(EAdType adType);
 };

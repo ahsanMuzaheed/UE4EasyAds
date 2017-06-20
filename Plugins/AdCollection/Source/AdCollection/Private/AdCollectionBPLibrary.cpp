@@ -44,24 +44,24 @@ void UAdCollectionBPLibrary::PlayAdVideo(EAdType adType)
 
 
 
-void UAdCollectionBPLibrary::ShowBanner(EAdType adType, const FString& adUnit, bool isOnBottom)
+void UAdCollectionBPLibrary::ShowBanner(EAdType adType, bool isOnBottom)
 {
 	IAdModuleInterface* Module = FindAdsModule(adType);
 	if (Module != NULL)
 	{
 		enAdsBannerPos pos = enAdsBannerPos::enAdsBannerPos_Bottom;
 		if (!isOnBottom) pos = enAdsBannerPos::enAdsBannerPos_Top;
-		return Module->ShowBanner(adUnit, pos);
+		return Module->ShowBanner(pos);
 	}
 }
 
 
-void UAdCollectionBPLibrary::ShowInterstitial(EAdType adType, const FString& adUnit)
+void UAdCollectionBPLibrary::ShowInterstitial(EAdType adType)
 {
 	IAdModuleInterface* Module = FindAdsModule(adType);
 	if (Module != NULL)
 	{
-		return Module->ShowInterstitialAd(adUnit);
+		return Module->ShowInterstitialAd();
 	}
 }
 

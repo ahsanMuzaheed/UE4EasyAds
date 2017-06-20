@@ -11,8 +11,8 @@ public:
 	/** IModuleInterface implementation */
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
-	virtual void ShowBanner(const FString adUnit, enAdsBannerPos pos) override;
+	virtual void ShowBanner(enAdsBannerPos pos) override;
 	virtual void HideBanner() override;
 	virtual void PlayAd() override;
-	virtual void ShowInterstitialAd(const FString adUnit) override;
+	virtual void ShowInterstitialAd() override;
 };

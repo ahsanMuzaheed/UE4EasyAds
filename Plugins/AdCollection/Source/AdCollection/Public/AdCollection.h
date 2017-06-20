@@ -24,7 +24,7 @@ class IAdModuleInterface :public IModuleInterface
 {
 public:
 
-	virtual void ShowBanner(const FString adUnit, enAdsBannerPos pos)
+	virtual void ShowBanner(enAdsBannerPos pos)
 	{
 	}
 
@@ -36,7 +36,7 @@ public:
 	{
 	}
 
-	virtual void ShowInterstitialAd(const FString adUnit)
+	virtual void ShowInterstitialAd()
 	{
 
 	}
