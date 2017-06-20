@@ -121,6 +121,16 @@
           }
           }
 
+          public boolean AndroidThunkJava_Unity_RewardedVideoReady()
+          {
+          if(unityInstance != null)
+          {
+          return unityInstance.IsRewardedVideoReady();
+          }
+          
+          return false;
+          }
+
 
 
           // End Unity gameActivityClassAdditions

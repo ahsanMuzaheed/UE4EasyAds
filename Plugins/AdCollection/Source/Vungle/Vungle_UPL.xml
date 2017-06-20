@@ -122,6 +122,16 @@
           return false;
           }
 
+          public boolean AndroidThunkJava_Vungle_Ready()
+          {
+          if (vungleInstance != null)
+          {
+          return vungleInstance.IsRewardedVideoReady();
+          }
+          
+          return false;
+          }
+
           // End Vungle gameActivityClassAdditions
         </insert>
 			</true>

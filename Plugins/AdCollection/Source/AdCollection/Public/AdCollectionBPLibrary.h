@@ -50,4 +50,13 @@ class UAdCollectionBPLibrary : public UBlueprintFunctionLibrary
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "ShowInterstitial", Keywords = "AdCollection Show Interstitial Ads"), Category = "AdCollection")
 	static void ShowInterstitial(EAdType adType);
+
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "IsBannerAdsReady", Keywords = "AdCollection Check Banner Ads Ready"), Category = "AdCollection")
+	static bool IsBannerReady(EAdType adType);
+
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "IsInterstitialAdsReady", Keywords = "AdCollection Check Interstital Ads Ready"), Category = "AdCollection")
+	static bool IsInterstitialReady(EAdType adType);
+
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "IsRewardedVideoAdsReady", Keywords = "AdCollection Check RewardedVideo Ads Ready"), Category = "AdCollection")
+	static bool IsRewardedVideoReady(EAdType adType);
 };

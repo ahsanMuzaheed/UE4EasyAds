@@ -154,6 +154,33 @@
           adMobInstance.HideAdBanner();
           }
           }
+          
+          public boolean AndroidThunkJava_AdMob_BannerReady()
+          {
+            if(adMobInstance != null)
+            {
+              return adMobInstance.IsBannerReady();
+            }
+            return false;
+          }
+          
+          public boolean AndroidThunkJava_AdMob_InterstitialReady()
+          {
+            if(adMobInstance != null)
+            {
+              return adMobInstance.IsInterstitialReady();
+            }
+            return false;
+          }
+          
+          public boolean AndroidThunkJava_AdMob_RewardedVideoReady()
+          {
+            if(adMobInstance != null)
+            {
+              return adMobInstance.IsRewardedVideoReady();
+            }
+            return false;
+          }
 
           // End AdMob gameActivityClassAdditions
         </insert>

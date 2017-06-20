@@ -32,12 +32,27 @@ public:
 	{
 	}
 
-	virtual void PlayAd() 
+	virtual void PlayRewardedVideo() 
 	{
 	}
 
 	virtual void ShowInterstitialAd()
 	{
 
+	}
+
+	virtual bool IsBannerReady()
+	{
+		return false;
+	}
+
+	virtual bool IsInterstitalReady()
+	{
+		return false;
+	}
+
+	virtual bool IsRewardedVideoReady()
+	{
+		return false;
 	}
 };

@@ -1,6 +1,6 @@
 #include "ChartBoost.h"
 
-void FChartBoostModule::PlayAd()
+void FChartBoostModule::PlayRewardedVideo()
 {
 
 }
@@ -8,4 +8,14 @@ void FChartBoostModule::PlayAd()
 void FChartBoostModule::ShowInterstitialAd()
 {
 
+}
+
+bool FChartBoostModule::IsInterstitalReady()
+{
+	return false;
+}
+
+bool FChartBoostModule::IsRewardedVideoReady()
+{
+	return false;
 }

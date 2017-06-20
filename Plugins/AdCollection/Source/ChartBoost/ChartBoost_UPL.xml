@@ -108,6 +108,26 @@
           }
           }
 
+          public boolean AndroidThunkJava_ChartBoost_InterstitialReady()
+          {
+          if(chartBoostInstance != null)
+          {
+          return chartBoostInstance.IsInterstitialReady();
+          }
+
+          return false;
+          }
+
+          public boolean AndroidThunkJava_ChartBoost_RewardedVideoReady()
+          {
+          if(chartBoostInstance != null)
+          {
+          return chartBoostInstance.IsRewardedVideoReady();
+          }
+
+          return false;
+          }
+
           // End ChartBoost gameActivityClassAdditions
         </insert>
 			</true>

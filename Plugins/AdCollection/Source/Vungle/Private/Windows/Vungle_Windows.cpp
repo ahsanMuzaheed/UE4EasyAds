@@ -1,5 +1,10 @@
 #include "Vungle.h"
 
-void FVungleModule::PlayAd()
+void FVungleModule::PlayRewardedVideo()
 {
+}
+
+bool FVungleModule::IsRewardedVideoReady()
+{
+	return false;
 }

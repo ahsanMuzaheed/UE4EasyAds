@@ -11,6 +11,8 @@ public:
 	/** IModuleInterface implementation */
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
-	virtual void PlayAd() override;
+	virtual void PlayRewardedVideo() override;
 	virtual void ShowInterstitialAd() override;
+	virtual bool IsInterstitalReady() override;
+	virtual bool IsRewardedVideoReady() override;
 };

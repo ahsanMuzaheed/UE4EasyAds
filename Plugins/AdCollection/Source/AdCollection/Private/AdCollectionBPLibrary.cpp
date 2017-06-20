@@ -38,7 +38,7 @@ void UAdCollectionBPLibrary::PlayAdVideo(EAdType adType)
 	IAdModuleInterface* Module = FindAdsModule(adType);
 	if (Module != NULL)
 	{
-		Module->PlayAd();
+		Module->PlayRewardedVideo();
 	}
 }
 
@@ -73,4 +73,38 @@ void UAdCollectionBPLibrary::HideBanner(EAdType adType)
 	{
 		Module->HideBanner();
 	}
+}
+
+
+bool UAdCollectionBPLibrary::IsBannerReady(EAdType adType)
+{
+	IAdModuleInterface* Module = FindAdsModule(adType);
+	if (Module != NULL)
+	{
+		return Module->IsBannerReady();
+	}
+
+	return false;
+}
+
+bool UAdCollectionBPLibrary::IsInterstitialReady(EAdType adType)
+{
+	IAdModuleInterface* Module = FindAdsModule(adType);
+	if (Module != NULL)
+	{
+		return Module->IsInterstitalReady();
+	}
+
+	return false;
+}
+
+bool UAdCollectionBPLibrary::IsRewardedVideoReady(EAdType adType)
+{
+	IAdModuleInterface* Module = FindAdsModule(adType);
+	if (Module != NULL)
+	{
+		return Module->IsRewardedVideoReady();
+	}
+
+	return false;
 }

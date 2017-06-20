@@ -15,6 +15,21 @@ void FAdMobModule::ShowInterstitialAd()
 
 }
 
-void FAdMobModule::PlayAd()
+void FAdMobModule::PlayRewardedVideo()
 {
+}
+
+bool FAdMobModule::IsBannerReady()
+{
+	return false;
+}
+
+bool FAdMobModule::IsInterstitalReady()
+{
+	return false;
+}
+
+bool FAdMobModule::IsRewardedVideoReady()
+{
+	return false;
 }

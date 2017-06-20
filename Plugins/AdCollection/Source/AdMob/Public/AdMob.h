@@ -13,6 +13,10 @@ public:
 	virtual void ShutdownModule() override;
 	virtual void ShowBanner(enAdsBannerPos pos) override;
 	virtual void HideBanner() override;
-	virtual void PlayAd() override;
+	virtual void PlayRewardedVideo() override;
 	virtual void ShowInterstitialAd() override;
+
+	virtual bool IsBannerReady() override;
+	virtual bool IsInterstitalReady() override;
+	virtual bool IsRewardedVideoReady() override;
 };

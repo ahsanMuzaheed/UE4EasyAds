@@ -71,7 +71,7 @@ void FAdMobModule::ShowInterstitialAd()
 }
 
 
-void FAdMobModule::PlayAd()
+void FAdMobModule::PlayRewardedVideo()
 {
 	if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
 	{
@@ -87,4 +87,61 @@ void FAdMobModule::PlayAd()
 
 		FJavaWrapper::CallVoidMethod(Env, FJavaWrapper::GameActivityThis, PlayRewardVideoMethod);
 	}
+}
+
+bool FAdMobModule::IsBannerReady()
+{
+	if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
+	{
+		const bool bIsOptional = false;
+		static jmethodID JniMethod = FJavaWrapper::FindMethod(Env, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_AdMob_BannerReady", "()Z", bIsOptional);
+		if (JniMethod == nullptr)
+		{
+			UE_LOG(AdCollection, Error, TEXT("AndroidThunkJava_AdMob_BannerReady not found"));
+			return false;
+		}
+
+		// Convert scope array into java fields
+		return FJavaWrapper::CallBooleanMethod(Env, FJavaWrapper::GameActivityThis, JniMethod);
+	}
+
+	return false;
+}
+
+bool FAdMobModule::IsInterstitalReady()
+{
+	if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
+	{
+		const bool bIsOptional = false;
+		static jmethodID JniMethod = FJavaWrapper::FindMethod(Env, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_AdMob_InterstitialReady", "()Z", bIsOptional);
+		if (JniMethod == nullptr)
+		{
+			UE_LOG(AdCollection, Error, TEXT("AndroidThunkJava_AdMob_InterstitialReady not found"));
+			return false;
+		}
+
+		// Convert scope array into java fields
+		return FJavaWrapper::CallBooleanMethod(Env, FJavaWrapper::GameActivityThis, JniMethod);
+	}
+
+	return false;
+}
+
+bool FAdMobModule::IsRewardedVideoReady()
+{
+	if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
+	{
+		const bool bIsOptional = false;
+		static jmethodID JniMethod = FJavaWrapper::FindMethod(Env, FJavaWrapper::GameActivityClassID, "AndroidThunkJava_AdMob_RewardedVideoReady", "()Z", bIsOptional);
+		if (JniMethod == nullptr)
+		{
+			UE_LOG(AdCollection, Error, TEXT("AndroidThunkJava_AdMob_RewardedVideoReady not found"));
+			return false;
+		}
+
+		// Convert scope array into java fields
+		return FJavaWrapper::CallBooleanMethod(Env, FJavaWrapper::GameActivityThis, JniMethod);
+	}
+
+	return false;
 }
