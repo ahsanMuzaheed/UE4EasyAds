@@ -145,3 +145,21 @@ bool FAdMobModule::IsRewardedVideoReady()
 
 	return false;
 }
+
+
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_AdMob_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz, jstring type, jint amount)
+{
+	FAdMobModule* pModule = FModuleManager::Get().LoadModulePtr<FAdMobModule>(TEXT("AdMob"));
+	if (pModule == nullptr) return;
+
+
+	FRewardedStatus status;
+	status.State = ERewardState::COMPLETED;
+	status.AdType = EAdType::AdMob;
+
+	const char* charsType = jenv->GetStringUTFChars(type, 0);
+	status.AdMobItem.Type = FString(UTF8_TO_TCHAR(charsType));
+	status.AdMobItem.Amount = (int)amount;
+
+	pModule->TriggerPlayRewardCompleteDelegates(status);
+}

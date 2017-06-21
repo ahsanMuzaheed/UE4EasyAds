@@ -47,3 +47,17 @@ bool FUnityModule::IsRewardedVideoReady()
 
 	return false;
 }
+
+
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Unity_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz)
+{
+	FUnityModule* pModule = FModuleManager::Get().LoadModulePtr<FUnityModule>(TEXT("Unity"));
+	if (pModule == nullptr) return;
+
+
+	FRewardedStatus status;
+	status.State = ERewardState::COMPLETED;
+	status.AdType = EAdType::Unity;
+
+	pModule->TriggerPlayRewardCompleteDelegates(status);
+}

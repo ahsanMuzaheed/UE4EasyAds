@@ -33,13 +33,54 @@ enum class EAdType : uint8
 };
 
 
+UENUM(BlueprintType)		//"BlueprintType" is essential to include
+enum class ERewardState : uint8
+{
+	COMPLETED 	UMETA(DisplayName = "COMPLETED"),
+	CLICKED 	UMETA(DisplayName = "CLICKED")
+};
+
+
+USTRUCT(BlueprintType)
+struct FAdMobRewardItem
+{
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FString Type;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int32 Amount;
+};
+
+
+USTRUCT(BlueprintType)
+struct FRewardedStatus
+{
+	GENERATED_USTRUCT_BODY()
+
+		UPROPERTY(EditAnywhere, BlueprintReadOnly)
+		ERewardState State;
+
+		UPROPERTY(EditAnywhere, BlueprintReadOnly)
+		EAdType AdType;
+
+		UPROPERTY(EditAnywhere, BlueprintReadOnly)
+		FAdMobRewardItem  AdMobItem;
+
+		UPROPERTY(EditAnywhere, BlueprintReadOnly)
+		int32 ChartBoostReward;
+};
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FPlayRewardedDelegate, FRewardedStatus, RewardStatus);
+
 UCLASS()
 class UAdCollectionBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
 
 	
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "PlayAdVideo", Keywords = "AdCollection Play"), Category = "AdCollection")
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "SimplePlayRewardedVideo", Keywords = "AdCollection Play"), Category = "AdCollection")
 	static void PlayAdVideo(EAdType adType);
 
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "ShowBanner", Keywords = "AdCollection Show Banner"), Category = "AdCollection")
