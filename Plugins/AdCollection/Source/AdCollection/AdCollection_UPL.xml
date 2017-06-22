@@ -25,11 +25,15 @@
 	
 	<!-- AAR dependencies -->
 	<AARImports>
-
-				<insertValue value="repository $S(PluginDir)/ThirdParty/Android/libs"/>
+        <insertValue value="repository $S(PluginDir)/ThirdParty/Android/libs"/>
 				<insertNewline/>
 				<insertValue value="com.ads.util,androidlib,1.0.0" />
 				<insertNewline/>
+
+        <insertValue value="repository $S(PluginDir)/ThirdParty/Android/libs"/>
+        <insertNewline/>
+        <insertValue value="com.android, volley,1.0.0" />
+        <insertNewline/>
 
 	</AARImports>
 
