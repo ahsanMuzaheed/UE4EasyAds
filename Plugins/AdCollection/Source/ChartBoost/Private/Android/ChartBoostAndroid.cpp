@@ -81,15 +81,13 @@ bool FChartBoostModule::IsRewardedVideoReady()
 	return false;
 }
 
-__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_ChartBoost_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz, jboolean isClick, jint amount)
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_ChartBoost_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz, jint amount)
 {
 	FChartBoostModule* pModule = FModuleManager::Get().LoadModulePtr<FChartBoostModule>(TEXT("ChartBoost"));
 	if (pModule == nullptr) return;
 
 
 	FRewardedStatus status;
-	status.State = ERewardState::COMPLETED;
-	if (isClick) status.State = ERewardState::CLICKED;
 	status.AdType = EAdType::ChartBoost;
 
 	status.ChartBoostReward = (int)amount;

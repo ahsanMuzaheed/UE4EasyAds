@@ -154,7 +154,6 @@ __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_AdMob_n
 
 
 	FRewardedStatus status;
-	status.State = ERewardState::COMPLETED;
 	status.AdType = EAdType::AdMob;
 
 	const char* charsType = jenv->GetStringUTFChars(type, 0);

@@ -56,8 +56,8 @@ __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Unity_n
 
 
 	FRewardedStatus status;
-	status.State = ERewardState::COMPLETED;
 	status.AdType = EAdType::Unity;
 
+	UE_LOG(AdCollection, Log, TEXT("AndroidThunkJava_Unity Reward Callback"));
 	pModule->TriggerPlayRewardCompleteDelegates(status);
 }

@@ -66,6 +66,7 @@ void UPlayRewardVideoCallbackProxy::Activate()
 	IAdModuleInterface* Module = FindAdsModule(AdType);
 	if (Module != NULL)
 	{
+		Module->ClearAllPlayRewardCompleteDelegate_Handle();
 		DelegateHandle = Module->AddPlayRewardCompleteDelegate_Handle(Delegate);
 		Module->PlayRewardedVideo();
 	}

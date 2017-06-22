@@ -33,12 +33,12 @@ enum class EAdType : uint8
 };
 
 
-UENUM(BlueprintType)		//"BlueprintType" is essential to include
+/*UENUM(BlueprintType)		//"BlueprintType" is essential to include
 enum class ERewardState : uint8
 {
 	COMPLETED 	UMETA(DisplayName = "COMPLETED"),
 	CLICKED 	UMETA(DisplayName = "CLICKED")
-};
+};*/
 
 
 USTRUCT(BlueprintType)
@@ -58,9 +58,6 @@ USTRUCT(BlueprintType)
 struct FRewardedStatus
 {
 	GENERATED_USTRUCT_BODY()
-
-		UPROPERTY(EditAnywhere, BlueprintReadOnly)
-		ERewardState State;
 
 		UPROPERTY(EditAnywhere, BlueprintReadOnly)
 		EAdType AdType;

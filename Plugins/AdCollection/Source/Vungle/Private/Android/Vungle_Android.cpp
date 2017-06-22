@@ -49,15 +49,13 @@ bool FVungleModule::IsRewardedVideoReady()
 	return false;
 }
 
-__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Vungle_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz, jboolean isClick)
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_Vungle_nativePlayRewardedComplete(JNIEnv* jenv, jobject thiz)
 {
 	FVungleModule* pModule = FModuleManager::Get().LoadModulePtr<FVungleModule>(TEXT("Vungle") );
 	if (pModule == nullptr) return;
 
 	
 	FRewardedStatus status;
-	status.State = ERewardState::COMPLETED;
-	if(isClick) status.State = ERewardState::CLICKED;
 	status.AdType = EAdType::Vungle;
 
 	pModule->TriggerPlayRewardCompleteDelegates(status);

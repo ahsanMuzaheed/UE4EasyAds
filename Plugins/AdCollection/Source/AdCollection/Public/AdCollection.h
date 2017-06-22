@@ -37,6 +37,10 @@ public: \
 	{ \
 		DelegateName##Delegates.Remove(Handle); \
 		Handle.Reset(); \
+	}\
+	virtual void ClearAll##DelegateName##Delegate_Handle() \
+	{ \
+		DelegateName##Delegates.Clear(); \
 	}
 
 
