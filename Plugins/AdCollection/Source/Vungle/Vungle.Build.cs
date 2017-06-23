@@ -68,6 +68,10 @@ public class Vungle : ModuleRules
         {
             PrivateIncludePaths.Add("Private/Windows");
         }
+        else if(Target.Platform == UnrealTargetPlatform.Mac)
+        {
+            PrivateIncludePaths.Add("Private/Mac");
+        }
         else
         {
             PrecompileForTargets = PrecompileTargetsType.None;
