@@ -5,6 +5,7 @@ Saved
 .vs
 Android_ETC1
 Build
+IOS
 *.VC.db
 *.opensdf
 *.opendb
@@ -13,3 +14,6 @@ Build
 *.suo
 *.xcodeproj
 *.xcworkspace
+*.apk
+*.ipa
+**/*.ipa

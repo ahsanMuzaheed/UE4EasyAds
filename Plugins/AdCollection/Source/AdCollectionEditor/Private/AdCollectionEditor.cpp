@@ -27,9 +27,10 @@ void FAdCollectionEditorModule::StartupModule()
 		SettingsModule->RegisterSettings(TEXT("Project"), TEXT("AdCollection"), TEXT("Vungle"),
 			LOCTEXT("Vungle", "Vungle"),
 			LOCTEXT("Vungle", "Settings for Vungle"),
-			GetMutableDefault<UVungleAndroidSetting>()
+			GetMutableDefault<UVungleSetting>()
 		);
-
+        
+        
 
 		SettingsModule->RegisterSettings(TEXT("Project"), TEXT("AdCollection"), TEXT("AdMob"),
 			LOCTEXT("AdMob", "AdMob"),

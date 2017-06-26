@@ -48,11 +48,7 @@ public class Vungle : ModuleRules
 			);
         
 
-        if (Target.Platform == UnrealTargetPlatform.IOS)
-        {
-            PrivateIncludePaths.Add("Private/IOS");
-        }
-        else if (Target.Platform == UnrealTargetPlatform.Android)
+        if (Target.Platform == UnrealTargetPlatform.Android)
         {
             PrivateIncludePaths.Add("Private/Android");
             PrivateDependencyModuleNames.AddRange(
@@ -67,6 +63,38 @@ public class Vungle : ModuleRules
         else if (Target.Platform == UnrealTargetPlatform.Win32 || Target.Platform == UnrealTargetPlatform.Win64)
         {
             PrivateIncludePaths.Add("Private/Windows");
+        }
+        else if(Target.Platform == UnrealTargetPlatform.IOS)
+        {
+            PrivateIncludePaths.Add("Private/IOS");
+
+            PublicAdditionalFrameworks.Add(
+                new UEBuildFramework(
+                "VungleSDK",														// Framework name
+                "../AdCollection/ThirdPartyFrameworks/VungleSDK.embeddedframework.zip")
+            );
+
+            PublicAdditionalFrameworks.Add(
+                new UEBuildFramework(
+                "AdsUtil",														// Framework name
+                "../AdCollection/ThirdPartyFrameworks/AdsUtil.embeddedframework.zip")
+            );
+
+
+            PublicFrameworks.AddRange(
+                new string[]
+                {
+                    "EventKit",
+                    "MediaPlayer",
+                    "AdSupport",
+                    "CoreLocation",
+                    "SystemConfiguration",
+                    "MessageUI",
+                    "Security",
+                    "CoreTelephony"
+                }
+                );
+
         }
         else if(Target.Platform == UnrealTargetPlatform.Mac)
         {

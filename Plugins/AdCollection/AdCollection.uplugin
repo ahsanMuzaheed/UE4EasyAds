@@ -17,32 +17,17 @@
     {
       "Name": "AdCollection",
       "Type": "Runtime",
-      "LoadingPhase": "PreLoadingScreen"
+      "LoadingPhase": "Default"
     },
     {
       "Name": "Vungle",
       "Type": "Runtime",
-      "LoadingPhase": "PreLoadingScreen"
+      "LoadingPhase": "Default"
     },
     {
       "Name": "AdCollectionEditor",
       "Type": "Editor",
       "LoadingPhase": "Default"
-    },
-    {
-      "Name": "AdMob",
-      "Type": "Runtime",
-      "LoadingPhase": "PreLoadingScreen"
-    },
-    {
-      "Name": "Unity",
-      "Type": "Runtime",
-      "LoadingPhase": "PreLoadingScreen"
-    },
-    {
-      "Name": "ChartBoost",
-      "Type": "Runtime",
-      "LoadingPhase": "PreLoadingScreen"
     }
-  ]
+     ]
 }
