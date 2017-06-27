@@ -10,6 +10,6 @@
 void UVungleSetting::PostEditChangeProperty(struct FPropertyChangedEvent& PropertyChangedEvent)
 {
 	Super::PostEditChangeProperty(PropertyChangedEvent);
-	SaveConfig();
+	SaveConfig(CPF_Config, *GetDefaultConfigFilename() );
 }
 #endif

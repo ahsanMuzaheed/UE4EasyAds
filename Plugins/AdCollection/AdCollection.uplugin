@@ -17,17 +17,17 @@
     {
       "Name": "AdCollection",
       "Type": "Runtime",
-      "LoadingPhase": "Default"
+      "LoadingPhase" : "PostConfigInit"
     },
     {
       "Name": "Vungle",
       "Type": "Runtime",
-      "LoadingPhase": "Default"
+      "LoadingPhase" : "PostConfigInit"
     },
     {
       "Name": "AdCollectionEditor",
       "Type": "Editor",
-      "LoadingPhase": "Default"
+      "LoadingPhase" : "Default"
     }
      ]
 }
