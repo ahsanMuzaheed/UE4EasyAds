@@ -7,9 +7,9 @@
 
 
 #if WITH_EDITOR
-void UChartBoostAndroidSetting::PostEditChangeProperty(struct FPropertyChangedEvent& PropertyChangedEvent)
+void UChartBoostSetting::PostEditChangeProperty(struct FPropertyChangedEvent& PropertyChangedEvent)
 {
 	Super::PostEditChangeProperty(PropertyChangedEvent);
-	SaveConfig();
+	SaveConfig(CPF_Config, *GetDefaultConfigFilename() );
 }
 #endif

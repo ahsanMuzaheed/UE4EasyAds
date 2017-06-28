@@ -35,20 +35,20 @@ void FAdCollectionEditorModule::StartupModule()
 		SettingsModule->RegisterSettings(TEXT("Project"), TEXT("AdCollection"), TEXT("AdMob"),
 			LOCTEXT("AdMob", "AdMob"),
 			LOCTEXT("AdMob", "Settings for AdMob"),
-			GetMutableDefault<UAdMobAndroidSetting>()
+			GetMutableDefault<UAdMobSetting>()
 		);
 
 		SettingsModule->RegisterSettings(TEXT("Project"), TEXT("AdCollection"), TEXT("Unity"),
 			LOCTEXT("Unity", "Unity"),
 			LOCTEXT("Unity", "Settings for Unity"),
-			GetMutableDefault<UUnityAndroidSetting>()
+			GetMutableDefault<UUnitySetting>()
 		);
 
 
 		SettingsModule->RegisterSettings(TEXT("Project"), TEXT("AdCollection"), TEXT("ChartBoost"),
 			LOCTEXT("ChartBoost", "ChartBoost"),
 			LOCTEXT("ChartBoost", "Settings for ChartBoost"),
-			GetMutableDefault<UChartBoostAndroidSetting>()
+			GetMutableDefault<UChartBoostSetting>()
 		);
 		
 	}

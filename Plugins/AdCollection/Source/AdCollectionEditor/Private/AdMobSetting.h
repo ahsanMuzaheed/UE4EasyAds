@@ -8,25 +8,41 @@
 /**
  * 
  */
-UCLASS(config = Engine, globaluserconfig)
-class UAdMobAndroidSetting : public UObject
+UCLASS(transient, config = Engine)
+class UAdMobSetting : public UObject
 {
 	GENERATED_BODY()
 	
-		UPROPERTY(GlobalConfig, EditAnywhere, Category = Android, Meta = (DisplayName = "If Is AdMob Enable"))
-		bool bEnabled;
+		UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "If AdMob Android Enable"))
+		bool bAndroidEnabled;
 
-	UPROPERTY(GlobalConfig, EditAnywhere, Category = Android, Meta = (DisplayName = "AdMob AppID"))
-		FString AppId;
+	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Android AppID"))
+		FString AndroidAppId;
 
-	UPROPERTY(GlobalConfig, EditAnywhere, Category = Android, Meta = (DisplayName = "AdMob Banner AdUnit"))
-		FString BannerUnit;
+	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Android Banner AdUnit"))
+		FString AndroidBannerUnit;
 
-	UPROPERTY(GlobalConfig, EditAnywhere, Category = Android, Meta = (DisplayName = "AdMob Interstitial AdUnit"))
-		FString InterstitialUnit;
+	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Android Interstitial AdUnit"))
+		FString AndroidInterstitialUnit;
 
-	UPROPERTY(GlobalConfig, EditAnywhere, Category = Android, Meta = (DisplayName = "AdMob RewardVideo AdUnit"))
-	FString RewardedVideoAdUnit;
+	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Android RewardVideo AdUnit"))
+	FString AndroidRewardedVideoAdUnit;
+    
+    
+    UPROPERTY(Config, EditAnywhere, Category = IOS, Meta = (DisplayName = "If AdMob IOS Enable"))
+    bool bIOSEnabled;
+    
+    UPROPERTY(Config, EditAnywhere, Category = IOS, Meta = (DisplayName = "IOS AppID"))
+    FString IOSAppId;
+    
+    UPROPERTY(Config, EditAnywhere, Category = IOS, Meta = (DisplayName = "IOS Banner AdUnit"))
+    FString IOSBannerUnit;
+    
+    UPROPERTY(Config, EditAnywhere, Category = IOS, Meta = (DisplayName = "IOS Interstitial AdUnit"))
+    FString IOSInterstitialUnit;
+    
+    UPROPERTY(Config, EditAnywhere, Category = IOS, Meta = (DisplayName = "IOS RewardVideo AdUnit"))
+    FString IOSRewardedVideoAdUnit;
 	
 #if WITH_EDITOR
 		// UObject interface

@@ -7,9 +7,9 @@
 
 
 #if WITH_EDITOR
-void UAdMobAndroidSetting::PostEditChangeProperty(struct FPropertyChangedEvent& PropertyChangedEvent)
+void UAdMobSetting::PostEditChangeProperty(struct FPropertyChangedEvent& PropertyChangedEvent)
 {
 	Super::PostEditChangeProperty(PropertyChangedEvent);
-	SaveConfig();
+	SaveConfig(CPF_Config, *GetDefaultConfigFilename() );
 }
 #endif

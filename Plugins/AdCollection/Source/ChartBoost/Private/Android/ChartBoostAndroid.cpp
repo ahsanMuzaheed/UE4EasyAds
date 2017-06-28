@@ -94,3 +94,17 @@ __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_ChartBo
 
 	pModule->TriggerPlayRewardCompleteDelegates(status);
 }
+
+
+void FChartBoostModule::StartupModule()
+{
+    // This code will execute after your module is loaded into memory; the exact timing is specified in the .uplugin file per-module
+    
+}
+
+void FChartBoostModule::ShutdownModule()
+{
+    // This function may be called during shutdown to clean up your module.  For modules that support dynamic reloading,
+    // we call this function before unloading the module.
+    
+}

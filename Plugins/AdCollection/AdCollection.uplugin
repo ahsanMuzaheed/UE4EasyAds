@@ -25,6 +25,23 @@
       "LoadingPhase" : "PostConfigInit"
     },
     {
+        "Name": "Unity",
+        "Type": "Runtime",
+        "LoadingPhase" : "PostConfigInit"
+    },
+    {
+        "Name": "ChartBoost",
+        "Type": "Runtime",
+        "LoadingPhase" : "PostConfigInit"
+    },
+
+    {
+        "Name": "AdMob",
+        "Type": "Runtime",
+        "LoadingPhase" : "PostConfigInit"
+    },
+
+    {
       "Name": "AdCollectionEditor",
       "Type": "Editor",
       "LoadingPhase" : "Default"

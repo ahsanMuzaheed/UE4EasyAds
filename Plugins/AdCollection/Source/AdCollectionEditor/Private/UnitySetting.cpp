@@ -7,9 +7,9 @@
 
 
 #if WITH_EDITOR
-void UUnityAndroidSetting::PostEditChangeProperty(struct FPropertyChangedEvent& PropertyChangedEvent)
+void UUnitySetting::PostEditChangeProperty(struct FPropertyChangedEvent& PropertyChangedEvent)
 {
 	Super::PostEditChangeProperty(PropertyChangedEvent);
-	SaveConfig();
+    SaveConfig(CPF_Config, *GetDefaultConfigFilename() );
 }
 #endif

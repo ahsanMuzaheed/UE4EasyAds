@@ -51,6 +51,35 @@ public class ChartBoost : ModuleRules
         if (Target.Platform == UnrealTargetPlatform.IOS)
         {
             PrivateIncludePaths.Add("Private/IOS");
+
+            PrivateIncludePaths.Add("Private/IOS");
+                PublicAdditionalFrameworks.Add(
+                new UEBuildFramework(
+                "Chartboost",														// Framework name
+                "../AdCollection/ThirdPartyFrameworks/Chartboost.embeddedframework.zip")
+                );
+
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "AdsUtil",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/AdsUtil.embeddedframework.zip")
+            );
+
+
+            PublicFrameworks.AddRange(
+            new string[]
+            {
+            "EventKit",
+            "MediaPlayer",
+            "AdSupport",
+            "CoreLocation",
+            "SystemConfiguration",
+            "MessageUI",
+            "Security",
+            "CoreTelephony"
+            }
+            );
+
         }
         else if (Target.Platform == UnrealTargetPlatform.Android)
         {
