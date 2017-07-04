@@ -15,8 +15,16 @@
 	</init>
 	
 	<!-- optional files or directories to copy to Intermediate/Android/APK -->
-	<resourceCopies>
-	</resourceCopies>
+  <!-- optional files or directories to copy to Intermediate/Android/APK -->
+  <resourceCopies>
+
+    <isArch arch="armeabi-v7a">
+      <copyDir src="$S(PluginDir)/ThirdParty/Android/libs/armeabi-v7a"
+          dst="$S(BuildDir)/libs/armeabi-v7a" />
+    </isArch>
+   
+    
+  </resourceCopies>
 	
 	<!-- Files to copy before the build so they can be used in the build -->
 	<prebuildCopies>
@@ -38,16 +46,28 @@
 	</prebuildCopies>
 	
 	<!-- AAR dependencies -->
-	<!-- <AARImports>
+	<AARImports>
 		<if condition="bEnabled">
 			<true>
-				<insertValue value="repository $S(PluginDir)/ThirdParty/Android/NotForLicensees"/>
-				<insertNewline/>
-				<insertValue value="FacebookSDK,facebook-android-sdk,4.19.0" />
-				<insertNewline/>
+        <insertValue value="repository $S(PluginDir)/ThirdParty/Android/aar"/>
+        <insertNewline/>
+        <insertValue value="Adapter,VungleAdapter,2.2.0" />
+        <insertNewline/>
+        <insertValue value="Adapter,unity,2.1.0.0" />
+        <insertNewline/>
+
+        <insertValue value="Sdk,adunit,2.1.0" />
+        <insertNewline/>
+        
+        <insertValue value="Adapter,chartboost,6.6.3.0" />
+        <insertNewline/>
+        
+        <insertValue value="Adapter,adcolony,3.1.2.0" />
+        <insertNewline/>
+        
 			</true>
 		</if>
-	</AARImports> -->
+	</AARImports>
 
 	<!-- optional updates applied to AndroidManifest.xml -->
 	<androidManifestUpdates>
@@ -77,16 +97,77 @@
         <addElement tag="application" name="RewardedVideoMetadata"/>
 
 
+        <setElement result="VunglePublisherActivity" value="activity"/>
+        <addAttribute tag="$VunglePublisherActivity" name="android:name" value="com.vungle.publisher.VideoFullScreenAdActivity"/>
+        <addAttribute tag="$VunglePublisherActivity" name="android:configChanges" value="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"/>
+        <addAttribute tag="$VunglePublisherActivity" name="android:theme" value="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <addElement tag="application" name="VunglePublisherActivity"/>
+
+
+        <setElement result="MraidFullScreenAdActivity" value="activity"/>
+        <addAttribute tag="$MraidFullScreenAdActivity" name="android:name" value="com.vungle.publisher.MraidFullScreenAdActivity"/>
+        <addAttribute tag="$MraidFullScreenAdActivity" name="android:configChanges" value="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize"/>
+        <addAttribute tag="$MraidFullScreenAdActivity" name="android:theme" value="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+        <addElement tag="application" name="MraidFullScreenAdActivity"/>
+
+
+        <setElement result="AdUnitActivity" value="activity"/>
+        <addAttribute tag="$AdUnitActivity" name="android:name" value="com.unity3d.ads.adunit.AdUnitActivity"/>
+        <addAttribute tag="$AdUnitActivity" name="android:configChanges" value="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"/>
+        <addAttribute tag="$AdUnitActivity" name="android:hardwareAccelerated" value="true"/>
+        <addAttribute tag="$AdUnitActivity" name="android:theme" value="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <addElement tag="application" name="AdUnitActivity"/>
+
+
+        <setElement result="AdUnitSoftwareActivity" value="activity"/>
+        <addAttribute tag="$AdUnitSoftwareActivity" name="android:name" value="com.unity3d.ads.adunit.AdUnitSoftwareActivity"/>
+        <addAttribute tag="$AdUnitSoftwareActivity" name="android:configChanges" value="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"/>
+        <addAttribute tag="$AdUnitSoftwareActivity" name="android:hardwareAccelerated" value="false"/>
+        <addAttribute tag="$AdUnitSoftwareActivity" name="android:theme" value="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <addElement tag="application" name="AdUnitSoftwareActivity"/>
+
+
+        <setElement result="AdChartBoostActivity" value="activity"/>
+        <addAttribute tag="$AdChartBoostActivity" name="android:name" value="com.chartboost.sdk.CBImpressionActivity"/>
+        <addAttribute tag="$AdChartBoostActivity" name="android:excludeFromRecents" value="true"/>
+        <addAttribute tag="$AdChartBoostActivity" name="android:hardwareAccelerated" value="true"/>
+        <addAttribute tag="$AdChartBoostActivity" name="android:theme" value="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+        <addAttribute tag="$AdChartBoostActivity" name="android:configChanges" value="keyboardHidden|orientation|screenSize"/>
+        <addElement tag="application" name="AdChartBoostActivity"/>
+
+
+
+        <setElement result="AdAdColonyActivity" value="activity"/>
+        <addAttribute tag="$AdAdColonyActivity" name="android:name" value="com.adcolony.sdk.AdColonyInterstitialActivity"/>
+        <addAttribute tag="$AdAdColonyActivity" name="android:hardwareAccelerated" value="true"/>
+        <addAttribute tag="$AdAdColonyActivity" name="android:configChanges" value="keyboardHidden|orientation|screenSize"/>
+        <addElement tag="application" name="AdAdColonyActivity"/>
+
+
+        <setElement result="AdAdColonyAdViewActivity" value="activity"/>
+        <addAttribute tag="$AdAdColonyAdViewActivity" name="android:name" value="com.adcolony.sdk.AdColonyAdViewActivity"/>
+        <addAttribute tag="$AdAdColonyAdViewActivity" name="android:hardwareAccelerated" value="true"/>
+        <addAttribute tag="$AdAdColonyAdViewActivity" name="android:configChanges" value="keyboardHidden|orientation|screenSize"/>
+        <addElement tag="application" name="AdAdColonyAdViewActivity"/>
+
+
         <setElement result="AdActivity" value="activity"/>
         <addAttribute tag="$AdActivity" name="android:name" value="com.google.android.gms.ads.AdActivity"/>
         <addAttribute tag="$AdActivity" name="android:configChanges" value="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
         <addAttribute tag="$AdActivity" name="android:theme" value="@android:style/Theme.Translucent"/>
         <addElement tag="application" name="AdActivity"/>
 
+        
+
         <!-- Add permissions -->
 				<addPermission android:name="android.permission.INTERNET" />
         <addPermission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18" />
         <addPermission android:name="android.permission.ACCESS_NETWORK_STATE" />
+        <addPermission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        <addPermission android:name="android.permission.VIBRATE" />
+        <addPermission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        <addPermission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        
 			</true>
 		</if>
 	</androidManifestUpdates>
