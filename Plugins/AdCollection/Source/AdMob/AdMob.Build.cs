@@ -5,6 +5,11 @@ using UnrealBuildTool;
 
 public class AdMob : ModuleRules
 {
+    private string ModulePath
+    {
+        get { return ModuleDirectory; }
+    }
+
 	public AdMob(TargetInfo Target)
 	{
 		
@@ -51,6 +56,11 @@ public class AdMob : ModuleRules
         if (Target.Platform == UnrealTargetPlatform.IOS)
         {
             PrivateIncludePaths.Add("Private/IOS");
+            PrivateIncludePaths.Add("../AdCollection/ThirdPartyFrameworks/VungleAdmobIOS/");
+
+            string strStaticPath = Path.GetFullPath( Path.Combine( ModulePath, "../AdCollection/ThirdPartyFrameworks/VungleAdmobIOS/" ) );
+
+            PublicLibraryPaths.Add(strStaticPath);
 
             PublicAdditionalFrameworks.Add(
             new UEBuildFramework(
@@ -75,6 +85,13 @@ public class AdMob : ModuleRules
             new UEBuildFramework(
             "Chartboost",														// Framework name
             "../AdCollection/ThirdPartyFrameworks/Chartboost.embeddedframework.zip")
+            );
+
+
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "AdColony",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/AdColony-iOS-SDK-3.zip")
             );
 
 
@@ -105,6 +122,9 @@ public class AdMob : ModuleRules
             "AdsUtil",														// Framework name
             "../AdCollection/ThirdPartyFrameworks/AdsUtil.embeddedframework.zip")
             );
+
+            PublicAdditionalLibraries.Add("VungleAdapter");
+            PublicAdditionalShadowFiles.Add("../AdCollection/ThirdPartyFrameworks/VungleAdmobIOS/libVungleAdapter.a");
 
 
             PublicFrameworks.AddRange(
