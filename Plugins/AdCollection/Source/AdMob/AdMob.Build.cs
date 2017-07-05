@@ -60,6 +60,48 @@ public class AdMob : ModuleRules
 
             PublicAdditionalFrameworks.Add(
             new UEBuildFramework(
+            "UnityAds",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/UnityAds.embeddedframework.zip")
+            );
+
+
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "VungleSDK",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/VungleSDK.embeddedframework.zip")
+            );
+
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "Chartboost",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/Chartboost.embeddedframework.zip")
+            );
+
+
+            // adapter
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "UnityAdapter",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/UnityAdapter-2.1.0.0.zip")
+            );
+
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "ChartboostAdapter",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/ChartboostAdapter-6.6.3.0.zip")
+            );
+            
+
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
+            "AdColonyAdapter",														// Framework name
+            "../AdCollection/ThirdPartyFrameworks/AdColonyAdapter-3.1.1.0.zip")
+            );
+
+
+            // helper lib
+            PublicAdditionalFrameworks.Add(
+            new UEBuildFramework(
             "AdsUtil",														// Framework name
             "../AdCollection/ThirdPartyFrameworks/AdsUtil.embeddedframework.zip")
             );
