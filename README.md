@@ -76,6 +76,7 @@ All features are available in C++ and Blueprint. this plugin automatic process a
 # Support
   
   Email:feixuwu@outlook.com
+  
   TeamViewer remote support, you can first contact with emal
   
 # License
@@ -95,3 +96,6 @@ If you have monetized more than $1000 using this plugin, you are also required t
   
 ## ★ Why I can't see my ads?
   After create admob or add new ad source, It'll wait some time(mybe several hours) the client can receive ads.
+  
+## ★ What's the difference with UnrealEngine4-EZ-Mobile-Ads?
+  First, I created UnrealEngine4-EZ-Mobile-Ads for my self and sevral friend, it easy to use and manager multiple ads by client, but to add or remove new ads, you need resubmit you game, it's not flexible. However google admob mediation system support thirdparty ads and deliver ads with realtime eCPM from top to low. obviously, this is the better solution. 
