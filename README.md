@@ -107,3 +107,12 @@ If you have monetized more than $1000 using this plugin, you are also required t
   
 ## ★ What's the difference with UnrealEngine4-EZ-Mobile-Ads?
   First, I created UnrealEngine4-EZ-Mobile-Ads for my self and sevral friends, it easy to use and manager multiple ads by client, but to add or remove new ads, you need resubmit you game, it's not flexible. However google admob mediation system support thirdparty ads and deliver ads with realtime eCPM from top to low. obviously, this is the better solution. 
+  
+  
+## ★ If I use in project with engine version 4.17, it will remind me the plugin is not compatible with engine, is there compatible problem?
+
+ No, after do some debug and read 4.17 source, I found it's the engine bug, all the plugin without binary will get the warning.
+ There's a engine bug report here: https://issues.unrealengine.com/issue/UE-49007
+ 
+ So after the engine remind you if disable the plugin, click no, and then confirm to build the plugin, next time to start the project,
+ the warning will dissappear.
