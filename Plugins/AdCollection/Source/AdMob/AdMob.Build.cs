@@ -124,7 +124,7 @@ public class AdMob : ModuleRules
             );
 
             PublicAdditionalLibraries.Add("VungleAdapter");
-            PublicAdditionalShadowFiles.Add("../AdCollection/ThirdPartyFrameworks/VungleAdmobIOS/libVungleAdapter.a");
+            PublicAdditionalShadowFiles.Add(Path.Combine(strStaticPath, "libVungleAdapter.a") );
 
 
             PublicFrameworks.AddRange(
