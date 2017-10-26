@@ -4,7 +4,7 @@ using UnrealBuildTool;
 
 public class AdCollection : ModuleRules
 {
-	public AdCollection(TargetInfo Target)
+	public AdCollection(ReadOnlyTargetRules Target) : base(Target)
 	{
 		
 		PublicIncludePaths.AddRange(
@@ -57,7 +57,7 @@ public class AdCollection : ModuleRules
 
         if (Target.Platform == UnrealTargetPlatform.Android)
         {
-            string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, BuildConfiguration.RelativeEnginePath);
+            string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, Target.RelativeEnginePath);
             AdditionalPropertiesForReceipt.Add(new ReceiptProperty("AndroidPlugin", Path.Combine(PluginPath, "AdCollection_UPL.xml")));
         }
     }
