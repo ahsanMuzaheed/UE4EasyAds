@@ -104,7 +104,9 @@ public class AdMob : ModuleRules
             PrivateIncludePaths.Add("Private/IOS");
             PrivateIncludePaths.Add("../AdCollection/ThirdPartyFrameworks/VungleAdmobIOS/");
 
-            string strStaticPath = Path.GetFullPath( Path.Combine( ModulePath, "../AdCollection/ThirdPartyFrameworks/VungleAdmobIOS/" ) );
+            string PluginPath = Utils.MakePathRelativeTo(ModuleDirectory, Target.RelativeEnginePath + "/Source/");
+            PluginPath = PluginPath.Replace("\\", "/");
+            string strStaticPath = PluginPath + "/../AdCollection/ThirdPartyFrameworks/VungleAdmobIOS/";
 
             PublicLibraryPaths.Add(strStaticPath);
 
@@ -170,7 +172,7 @@ public class AdMob : ModuleRules
             );
 
             PublicAdditionalLibraries.Add("VungleAdapter");
-            PublicAdditionalShadowFiles.Add(Path.Combine(strStaticPath, "libVungleAdapter.a") );
+            PublicAdditionalShadowFiles.Add(strStaticPath + "libVungleAdapter.a");
 
 
             PublicFrameworks.AddRange(
