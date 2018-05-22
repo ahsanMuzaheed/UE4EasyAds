@@ -64,6 +64,9 @@
         
         <insertValue value="Adapter,adcolony,3.1.2.0" />
         <insertNewline/>
+		
+		<insertValue value="com.google.android.gms,play-services-ads,11.0.4"/>
+        <insertNewline/>
         
 			</true>
 		</if>
