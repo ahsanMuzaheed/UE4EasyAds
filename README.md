@@ -7,7 +7,7 @@ All features are available in C++ and Blueprint. this plugin automatic process a
  you can easy use just call when you need.
 
 # REMARK
-   I have no time to keep two similar ad plugin, so this plugin will not update. please try use https://github.com/feixuwu/UnrealEngine4-EZ-Mobile-Ads
+   I have no time to keep two similar ad plugin, so this plugin will not update from now on. please try use https://github.com/feixuwu/UnrealEngine4-EZ-Mobile-Ads
 
 # FEATURES: 
 ★ 5 best game ad networks supported.
