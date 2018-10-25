@@ -6,6 +6,9 @@ You can dynamic configure and manager multiple ads by google Admob, it will  hel
 All features are available in C++ and Blueprint. this plugin automatic process ads reload and other detail, so
  you can easy use just call when you need.
 
+# REMARK
+   I have no time to keep two similar ad plugin, so this plugin will not update. please try use https://github.com/feixuwu/UnrealEngine4-EZ-Mobile-Ads
+
 # FEATURES: 
 ★ 5 best game ad networks supported.
 
