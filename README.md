@@ -7,7 +7,7 @@ All features are available in C++ and Blueprint. this plugin automatic process a
  you can easy use just call when you need.
 
 # REMARK
-  the plugin is on market now!!, the git content will be newer than the market.
+  the plugin is on market now!!, the git content will be newer than the market(currently, the market version only support admob).
    https://www.unrealengine.com/marketplace/en-US/slug/ada7fb755f4541a685b497b6de0d0163
    
   all the content will first update here and then submit to marketplace.
