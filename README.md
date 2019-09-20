@@ -59,30 +59,43 @@ Watch this video to learn how to use the plugin
 
 
 # Usage
-  you can simply run the demo project for test, to integrates your own project, juse few steps:
+ ## 1. fill ad unit
+   open Editor->Project Setting, find EasyAds fill the ad unit:
+ 
+  ![ScreenShot](img/setting.PNG)
   
-1、Copy Plugins folder to your project and compile the editor.
-
-2、Configure Ads? easy!!
-      open project editor and find Admob Setting,  fill your application id for both Android and IOS.
-      ![ScreenShot](docs/admobconfig.PNG)
-      
-3、In blueprint Editor, when you want show show the ads, just call function "PlayRewardedVideo",  setting the ad platform Admob(we only need Admob, other ads can confiure from Admob,
-	by adding ad source) . 
-       you can add custom event to process after user complete watched the ads video.
-	![ScreenShot](docs/call.PNG)
-
-	  
-# Other ShowCase
-★ Want show Banner?
-	![ScreenShot](docs/banner.PNG)
-
-★ Want show interstitial?
-	![ScreenShot](docs/interstitial.PNG)
-	 
-★ Want reward player with confiure coins?  
-	![ScreenShot](docs/call.PNG)
-	
+  
+ ## 2. call function show ads
+ in blueprint editor, when you want show show the ads, just call function "ShowBanner", "ShowInterstitial", "PlayRewardedVideo"
+  ShowBanner:
+  
+  ![ScreenShot](img/showbanner.PNG)
+  
+  ShowInterstitial:
+  
+  ![ScreenShot](img/showinterstital.PNG)
+  
+  PlayRewardedVideo:
+  
+  ![ScreenShot](img/playvideo.PNG)
+  
+ Some times, you want to check if ads aviable, you can call "IsBannerReady", "IsInterstiralAdsReady", "IsRewardedVideoAdsReady"
+  
+  IsBannerReady:
+  
+  ![ScreenShot](img/checkBaner.PNG)
+  
+  IsInterstiralAdsReady:
+  
+   ![ScreenShot](img/checkInterstital.PNG)
+   
+  IsRewardedVideoAdsReady:
+  
+   ![ScreenShot](img/checkvideo.PNG)
+   
+   
+ # License
+   free to use, and I will share 2% ads traffic. If your game earn a lot of money from ads, you may want buy the pro version, it will not share any ads traffic.
 	
 	
 # Support
@@ -90,18 +103,4 @@ Watch this video to learn how to use the plugin
   Email:feixuwu@outlook.com
   
   TeamViewer remote support, you can first contact with emal
-  
-
-# FAQ
-
-## ★ I'm not good with C++, can I use this plugin?
-
-  Yes, of course you can, use this plugin, you don't have to have C++ knowlege, and don't need recompile the all engine. 
-  
-  But you need to have visualstudio or xcode can build C++ code, just put the plugins folder under you project root folder,  
-  then double click the uproject file as usual, after several minutes(3-5), the editor will launch.
-  
-  
-## ★ Why I can't see my ads?
-  After create admob or add new ad source, It'll wait some time(mybe several hours) the client can receive ads.
 
