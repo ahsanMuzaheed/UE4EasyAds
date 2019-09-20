@@ -1,4 +1,4 @@
-# UnrealEngine4-Admob
+# UE4EasyAds
 One line code(or blueprint) Integrates Google AdMob mediation system with other ad networks for iOS &amp; Android.
 
 This Plugin help you easy integrates multiple ad networks for your game both Android and IOS same code, 
@@ -7,18 +7,18 @@ All features are available in C++ and Blueprint. this plugin automatic process a
  you can easy use just call when you need.
 
 # REMARK
-   For people only use admob, the plugin is on market now!!
+  the plugin is on market now!!, the git content will be newer than the market.
    https://www.unrealengine.com/marketplace/en-US/slug/ada7fb755f4541a685b497b6de0d0163
    
-   this project will not update and all the new update will put on the plugin in market.
+  all the content will first update here and then submit to marketplace.
 
 # FEATURES: 
-★ 5 best game ad networks supported.
+★ 4 best game ad networks supported.
 
 ★  extremely easy  integrates just one line c++ code or blueprint for both IOS and Android. plugin automatic process ads reload
   and other detail.
 
-★  supoort unreal engine 4 4.18 4.19 4.20.
+★  supoort unreal engine 4 4.23.
 
 ★ support via e-mail feixuwu@outlook.com
 
@@ -43,8 +43,6 @@ All features are available in C++ and Blueprint. this plugin automatic process a
 ★ ChartBoost
 
 ★ Unity
-
-★ AdColony
 
 # Install
 
@@ -106,15 +104,4 @@ Watch this video to learn how to use the plugin
   
 ## ★ Why I can't see my ads?
   After create admob or add new ad source, It'll wait some time(mybe several hours) the client can receive ads.
-  
-## ★ What's the difference with UnrealEngine4-EZ-Mobile-Ads?
-  First, I created UnrealEngine4-EZ-Mobile-Ads for my self and sevral friends, it easy to use and manager multiple ads by client, but to add or remove new ads, you need resubmit you game, it's not flexible. However google admob mediation system support thirdparty ads and deliver ads with realtime eCPM from top to low. obviously, this is the better solution. 
-  
-  
-## ★ If I use in project with engine version 4.17, it will remind me the plugin is not compatible with engine, is there compatible problem?
 
- No, after do some debug and read 4.17 source, I found it's the engine bug, all the plugin without binary will get the warning.
- There's a engine bug report here: https://issues.unrealengine.com/issue/UE-49007
- 
- So after the engine remind you if disable the plugin, click no, and then confirm to build the plugin, next time to start the project,
- the warning will dissappear.
