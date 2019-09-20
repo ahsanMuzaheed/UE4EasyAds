@@ -2,9 +2,8 @@ Binaries
 DerivedDataCache
 Intermediate
 Saved
+.vscode
 .vs
-Android_ETC1
-Build
 *.VC.db
 *.opensdf
 *.opendb
@@ -13,6 +12,6 @@ Build
 *.suo
 *.xcodeproj
 *.xcworkspace
-*.apk
-*.ipa
-**/*.ipa
+Build/**
+Android_ETC1/**
+IOS/**
