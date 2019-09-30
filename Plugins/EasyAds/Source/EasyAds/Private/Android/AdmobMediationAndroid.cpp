@@ -137,7 +137,6 @@ bool AdmobMediation::IsInterstitalReady()
 }
 
 
-
 void AdmobMediation::PlayRewardedVideo()
 {
 	if (JNIEnv* Env = FAndroidApplication::GetJavaEnv())
@@ -284,6 +283,31 @@ __attribute__((visibility("default"))) extern "C" void Java_com_ads_util_AdMob_n
 				mediation.TriggerPlayRewardCompleteDelegates(strHoldType, (int32)amount);
 			}),
 		GET_STATID(STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete),
+				nullptr,
+				ENamedThreads::GameThread
+				);
+}
+
+
+__attribute__((visibility("default"))) extern "C" void Java_com_ads_util_AdMob_nativeDebugMessage(JNIEnv* jenv, jobject thiz, jstring debugMessage)
+{
+	const char* pDebugMessage = jenv->GetStringUTFChars(debugMessage, 0);
+	FString strDebugMessage = FString(UTF8_TO_TCHAR(pDebugMessage));
+
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativeDebugMessage"), STAT_FSimpleDelegateGraphTask_nativeDebugMessage, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+			{
+				//FModuleManager
+				FEasyAdsModule* pModule = FModuleManager::Get().LoadModulePtr<FEasyAdsModule>(TEXT("EasyAds"));
+				if (pModule == nullptr) return;
+
+
+				AdmobMediation& mediation = pModule->GetAdmobMediation();
+
+				mediation.TriggerEasyAdsDebugMessageDelegates(strDebugMessage);
+			}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_nativeDebugMessage),
 				nullptr,
 				ENamedThreads::GameThread
 				);

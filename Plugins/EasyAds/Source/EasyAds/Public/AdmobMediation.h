@@ -8,6 +8,9 @@
 
 #include "CoreMinimal.h"
 
+DECLARE_MULTICAST_DELEGATE_OneParam(FEasyAdsDebugMessage, FString);
+typedef FEasyAdsDebugMessage::FDelegate FEasyAdsDebugMessageDelegate;
+
 DECLARE_MULTICAST_DELEGATE_TwoParams(FPlayRewardComplete, FString, int32);
 typedef FPlayRewardComplete::FDelegate FPlayRewardCompleteDelegate;
 
@@ -126,6 +129,7 @@ public:
 	*/
 	void LaunchTestSuite();
 
+
 	/**
 	* init function
 	*/
@@ -137,4 +141,5 @@ public:
 	DEFINE_ADS_DELEGATE(InterstitialClosed);
 	DEFINE_ADS_DELEGATE(PlayRewardClosed);
 	DEFINE_ADS_DELEGATE_TWO_PARAMS(PlayRewardComplete, FString, int32);
+	DEFINE_ADS_DELEGATE_ONE_PARAM(EasyAdsDebugMessage, FString);
 };

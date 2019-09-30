@@ -8,13 +8,33 @@
 #include "IOSAppDelegate.h"
 #include "Misc/ConfigCacheIni.h"
 #include "Async/TaskGraphInterfaces.h"
-#import "admobutil/AdsUtil.h"
+#import "AdsUtil.h"
 
 
 DEFINE_LOG_CATEGORY_STATIC(EasyAds, Log, All);
 
 AdmobMediation::AdmobMediation()
 {
+}
+
+static void IOS_AdMobRcvDebugMessage(NSString* debugMessage)
+{
+	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativeRcvDebugMessage"), STAT_FSimpleDelegateGraphTask_nativeRcvDebugMessage, STATGROUP_TaskGraphTasks);
+	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
+		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
+			{
+				FEasyAdsModule* pEasyModule = FModuleManager::Get().LoadModulePtr<FEasyAdsModule>(TEXT("EasyAds"));
+				if (pEasyModule == nullptr) return;
+
+				AdmobMediation& mediation = pEasyModule->GetAdmobMediation();
+				FString strDebugMessage = UTF8_TO_TCHAR([debugMessage cStringUsingEncoding : NSUTF8StringEncoding]);
+
+				mediation.TriggerEasyAdsDebugMessageDelegates(strDebugMessage);
+			}),
+		GET_STATID(STAT_FSimpleDelegateGraphTask_nativeRcvDebugMessage),
+				nullptr,
+				ENamedThreads::GameThread
+				);
 }
 
 static void IOS_AdMobPlayComplete(NSString* type, int amount)
@@ -133,7 +153,7 @@ void AdmobMediation::init()
 			BannerUnit : [NSString stringWithFString : bannerUnit]
 			InterstitalUnit : [NSString stringWithFString : InterstitalUnit] RewardedUnit : [NSString stringWithFString : rewardedUnit]
 			callback : &IOS_AdMobPlayComplete rewardClose : &IOS_AdmobRewardClose  interstitialShow : &IOS_AdmobInterstitialShow
-			interstitialClick : &IOS_AdmobInterstitialClick interstitialClose : IOS_AdmobInterstitialClose];
+			interstitialClick : &IOS_AdmobInterstitialClick interstitialClose : IOS_AdmobInterstitialClose rcvDebugMessage :&IOS_AdMobRcvDebugMessage];
 		});
 }
 

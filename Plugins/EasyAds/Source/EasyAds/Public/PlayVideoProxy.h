@@ -11,6 +11,7 @@
 #include "AdmobMediation.h"
 #include "PlayVideoProxy.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDynamicEasyAdsDebugMessageDelegate, FString, debugMessage);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FPlayRewardedDelegate, FString, item, int32, amount);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDynamicRewardedClosedDelegate);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FDynamicInterstitialShowDelegate);
