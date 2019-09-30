@@ -93,6 +93,9 @@ Watch this video to learn how to use the plugin
   
    ![ScreenShot](img/checkvideo.PNG)
    
+  Read debug message to learn why ads load fail
+  ![ScreenShot](img/debug.PNG)
+   
    
  # License
    free to use, and I will share 2% ads traffic. If your game earn a lot of money from ads, you may want buy the pro version, it will not share any ads traffic.
