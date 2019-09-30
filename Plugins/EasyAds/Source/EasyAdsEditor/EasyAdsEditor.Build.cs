@@ -43,8 +43,6 @@ public class EasyAdsEditor : ModuleRules
                 "PropertyEditor",
                 "SharedSettingsWidgets",
                 "SourceControl",
-                "AndroidRuntimeSettings",
-                "AndroidDeviceDetection",
                 "TargetPlatform",
                 "RenderCore",
                 "MaterialShaderQualitySettings",
