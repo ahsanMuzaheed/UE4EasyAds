@@ -8,7 +8,7 @@
 #include "IOSAppDelegate.h"
 #include "Misc/ConfigCacheIni.h"
 #include "Async/TaskGraphInterfaces.h"
-#import "AdsUtil.h"
+#import "admobutil/AdsUtil.h"
 
 
 DEFINE_LOG_CATEGORY_STATIC(EasyAds, Log, All);
