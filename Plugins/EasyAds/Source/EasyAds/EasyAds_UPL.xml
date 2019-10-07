@@ -92,16 +92,18 @@ EasyAds - unreal engine 4 ads plugin
     <insertNewline/>
     
 
-    <insertValue value="com.google.ads.mediation,vungle,6.4.11.0"/>
-    <insertNewline/>
     
-    <insertValue value="com.vungle,publisher-sdk-android,6.4.11"/>
-    <insertNewline/>
 
     <insertValue value="repository $S(PluginDir)/../ThirdParty/Android/libs"/>
     <insertNewline/>
     
     <insertValue value="com.ads.util,util,1.0.0" />
+    <insertNewline/>
+
+    <insertValue value="com.google.ads.mediation,vungle,6.4.11.1.0"/>
+    <insertNewline/>
+
+    <insertValue value="com.vungle,publisher-sdk-android,6.4.11.0"/>
     <insertNewline/>
 
     <if condition="EnableTestSuite">
