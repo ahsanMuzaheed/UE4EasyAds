@@ -20,6 +20,7 @@ AdmobMediation::AdmobMediation()
 static void IOS_AdMobRcvDebugMessage(NSString* debugMessage)
 {
 	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativeRcvDebugMessage"), STAT_FSimpleDelegateGraphTask_nativeRcvDebugMessage, STATGROUP_TaskGraphTasks);
+	FString strDebugMessage = UTF8_TO_TCHAR([debugMessage cStringUsingEncoding : NSUTF8StringEncoding]);
 	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
 		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 			{
@@ -27,8 +28,6 @@ static void IOS_AdMobRcvDebugMessage(NSString* debugMessage)
 				if (pEasyModule == nullptr) return;
 
 				AdmobMediation& mediation = pEasyModule->GetAdmobMediation();
-				FString strDebugMessage = UTF8_TO_TCHAR([debugMessage cStringUsingEncoding : NSUTF8StringEncoding]);
-
 				mediation.TriggerEasyAdsDebugMessageDelegates(strDebugMessage);
 			}),
 		GET_STATID(STAT_FSimpleDelegateGraphTask_nativeRcvDebugMessage),
@@ -40,6 +39,7 @@ static void IOS_AdMobRcvDebugMessage(NSString* debugMessage)
 static void IOS_AdMobPlayComplete(NSString* type, int amount)
 {
 	DECLARE_CYCLE_STAT(TEXT("FSimpleDelegateGraphTask.nativePlayRewardedComplete"), STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete, STATGROUP_TaskGraphTasks);
+	FString strType = UTF8_TO_TCHAR([type cStringUsingEncoding : NSUTF8StringEncoding]);
 	FSimpleDelegateGraphTask::CreateAndDispatchWhenReady(
 		FSimpleDelegateGraphTask::FDelegate::CreateLambda([=]()
 			{
@@ -47,8 +47,6 @@ static void IOS_AdMobPlayComplete(NSString* type, int amount)
 				if (pEasyModule == nullptr) return;
 
 				AdmobMediation& mediation = pEasyModule->GetAdmobMediation();
-				FString strType = UTF8_TO_TCHAR([type cStringUsingEncoding : NSUTF8StringEncoding]);
-
 				mediation.TriggerPlayRewardCompleteDelegates(strType, (int32)amount);
 			}),
 		GET_STATID(STAT_FSimpleDelegateGraphTask_nativePlayRewardedComplete),
