@@ -46,6 +46,7 @@ EasyAds - unreal engine 4 ads plugin
 	</gradleCopies>
 
   
+  
 	
 	<!-- Files to copy before the build so they can be used in the build -->
 	<prebuildCopies>
@@ -177,10 +178,71 @@ EasyAds - unreal engine 4 ads plugin
 			
 	</androidManifestUpdates>
 
-	<!-- optional additions to proguard -->
-	<proguardAdditions>
-		
-	</proguardAdditions>
+  <!-- optional additions to proguard -->
+  <proguardAdditions>
+    <insert>
+      # Keep filenames and line numbers for stack traces
+      -keepattributes SourceFile,LineNumberTable
+
+      # Keep JavascriptInterface for WebView bridge
+      -keepattributes JavascriptInterface
+
+      # Sometimes keepattributes is not enough to keep annotations
+      -keep class android.webkit.JavascriptInterface {
+      *;
+      }
+
+      # Keep all classes in Unity Ads package
+      -keep class com.unity3d.ads.** {
+      *;
+      }
+      -dontwarn com.unity3d.ads.**
+      -dontwarn java.lang.invoke.**
+
+      #vungle
+      -keep class com.vungle.warren.** { *; }
+      -keep class com.vungle.warren.downloader.DownloadRequest
+      -dontwarn com.vungle.warren.error.VungleError$ErrorCode
+      -dontwarn com.vungle.warren.downloader.DownloadRequest$Status
+      -keepclassmembers enum com.vungle.warren.** { *; }
+
+      # Moat SDK
+      -keep class com.moat.** { *; }
+      -dontwarn com.moat.**
+      -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+      -keepattributes *Annotation*
+
+      # Retrofit
+      -keepattributes Signature, InnerClasses
+      -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
+      -dontwarn javax.annotation.**
+      -dontwarn kotlin.Unit
+      -dontwarn retrofit2.-KotlinExtensions
+      -keepclassmembers,allowshrinking,allowobfuscation interface * {
+      @retrofit2.http.* &lt;methods&gt;
+        ;
+        }
+
+        # Okio+OkHttp
+        -dontwarn okhttp3.**
+        -dontwarn okio.**
+        -dontwarn javax.annotation.**
+        -dontwarn org.conscrypt.**
+        -keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+        -keepclassmembers class * extends com.vungle.warren.persistence.Memorable {
+        public &lt;init&gt;(byte[]);
+      }
+
+
+      -keep class com.chartboost.** { *; }
+
+      -dontwarn org.apache.http.**
+      -dontwarn android.net.http.**
+      -dontwarn com.android.volley.**
+      -dontwarn android.app.Activity
+
+    </insert>
+  </proguardAdditions>
 
 
 	<!-- optional additions to the GameActivity imports in GameActivity.java -->
