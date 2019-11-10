@@ -37,6 +37,16 @@ class UAdmobSetting : public UObject
 	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Enable Mediation TestSute", ToolTip = "this require minSdkVersion 16, else will package fail"))
 	bool EnableAndroidTestSuite;
 
+	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Disable Unity"))
+	bool DisableAndroidUnity;
+
+	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Disable Vungle"))
+	bool DisableAndroidVungle;
+
+	UPROPERTY(Config, EditAnywhere, Category = Android, Meta = (DisplayName = "Disable Chartboost"))
+	bool DisableAndroidChartboost;
+
+
 
 	UPROPERTY(Config, EditAnywhere, Category = IOS, Meta = (DisplayName = "IOS AppID"))
 	FString IOSAppId;

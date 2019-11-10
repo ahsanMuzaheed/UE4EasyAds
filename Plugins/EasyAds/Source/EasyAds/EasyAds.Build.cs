@@ -66,45 +66,45 @@ public class EasyAds : ModuleRules
         else if(Target.Platform == UnrealTargetPlatform.IOS)
         {
             PublicAdditionalFrameworks.Add(
-            new UEBuildFramework(
-            "admobutil",														// Framework name
-            "../ThirdParty/Frameworks/admobutil.embeddedframework.zip")
-            );
+               new Framework(
+               "admobutil",                                                     // Framework name
+               "../ThirdParty/Frameworks/admobutil.embeddedframework.zip")
+               );
 
             // admob
             PublicAdditionalFrameworks.Add(
-            new UEBuildFramework(
+            new Framework(
             "GoogleMobileAds",														// Framework name
             "../ThirdParty/Frameworks/GoogleMobileAds.embeddedframework.zip")
             );
 
             PublicAdditionalFrameworks.Add(
-            new UEBuildFramework(
+            new Framework(
             "GoogleAppMeasurement",														// Framework name
             "../ThirdParty/Frameworks/GoogleAppMeasurement.embeddedframework.zip")
             );
 
             PublicAdditionalFrameworks.Add(
-            new UEBuildFramework(
+            new Framework(
             "GoogleUtilities",														// Framework name
             "../ThirdParty/Frameworks/GoogleUtilities.embeddedframework.zip")
             );
 
             PublicAdditionalFrameworks.Add(
-            new UEBuildFramework(
+            new Framework(
             "nanopb",														// Framework name
             "../ThirdParty/Frameworks/nanopb.embeddedframework.zip")
             );
 
             // unity
             PublicAdditionalFrameworks.Add(
-            new UEBuildFramework(
+            new Framework(
             "UnityAds",														// Framework name
             "../ThirdParty/Frameworks/UnityAds.embeddedframework.zip")
             );
 
             PublicAdditionalFrameworks.Add(
-            new UEBuildFramework(
+            new Framework(
             "UnityAdapter",														// Framework name
             "../ThirdParty/Frameworks/UnityAdapter.embeddedframework.zip")
             );
@@ -112,32 +112,32 @@ public class EasyAds : ModuleRules
 
             // chartboost
             PublicAdditionalFrameworks.Add(
-            new UEBuildFramework(
+            new Framework(
             "CHAMoatMobileAppKit",														// Framework name
             "../ThirdParty/Frameworks/CHAMoatMobileAppKit.embeddedframework.zip")
             );
 
             PublicAdditionalFrameworks.Add(
-            new UEBuildFramework(
+            new Framework(
             "Chartboost",														// Framework name
             "../ThirdParty/Frameworks/Chartboost.embeddedframework.zip")
             );
 
             PublicAdditionalFrameworks.Add(
-            new UEBuildFramework(
+            new Framework(
             "ChartboostAdapter",														// Framework name
             "../ThirdParty/Frameworks/ChartboostAdapter.embeddedframework.zip")
             );
 
             // vungle
             PublicAdditionalFrameworks.Add(
-            new UEBuildFramework(
+            new Framework(
             "VungleAdapter",														// Framework name
             "../ThirdParty/Frameworks/VungleAdapter.embeddedframework.zip")
             );
 
             PublicAdditionalFrameworks.Add(
-            new UEBuildFramework(
+            new Framework(
             "VungleSDK",														// Framework name
             "../ThirdParty/Frameworks/VungleSDK.embeddedframework.zip")
             );

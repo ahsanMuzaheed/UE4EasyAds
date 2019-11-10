@@ -17,6 +17,10 @@ EasyAds - unreal engine 4 ads plugin
     <setStringFromProperty result="RewardedVideoAdUnit" ini="Engine" section="/Script/EasyAdsEditor.AdmobSetting" property="AndroidRewardedVideoAdUnit" default="0"/>
     <setStringFromProperty result="TestDevice" ini="Engine" section="/Script/EasyAdsEditor.AdmobSetting" property="AndroidTestDevice" default=""/>
     <setBoolFromProperty result="EnableTestSuite" ini="Engine" section="/Script/EasyAdsEditor.AdmobSetting" property="EnableAndroidTestSuite" default="false"/>
+
+    <setBoolFromProperty result="DisableUnity" ini="Engine" section="/Script/EasyAdsEditor.AdmobSetting" property="DisableAndroidUnity" default="false"/>
+    <setBoolFromProperty result="DisableVungle" ini="Engine" section="/Script/EasyAdsEditor.AdmobSetting" property="DisableAndroidVungle" default="false"/>
+    <setBoolFromProperty result="DisableChartboost" ini="Engine" section="/Script/EasyAdsEditor.AdmobSetting" property="DisableAndroidChartboost" default="false"/>
     
     <dumpvars/>
 	</init>
@@ -27,9 +31,38 @@ EasyAds - unreal engine 4 ads plugin
       
       <log text="Copying easyads files to staging"/>
     
-      <copyDir src="$S(PluginDir)/../ThirdParty/Android/libs" dst = "$S(BuildDir)/libs" />
+      <!-- <copyDir src="$S(PluginDir)/../ThirdParty/Android/libs" dst = "$S(BuildDir)/libs" />
                
-      <copyDir src="$S(PluginDir)/../ThirdParty/Android/libs" dst = "$S(BuildDir)/gradle/app/src/main/libs" />
+      <copyDir src="$S(PluginDir)/../ThirdParty/Android/libs" dst = "$S(BuildDir)/gradle/app/src/main/libs" /> -->
+
+    <if condition="DisableChartboost">
+      <false>
+        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/chartboost.jar" dst = "$S(BuildDir)/libs/chartboost.jar" />
+        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/chartboost.jar" dst = "$S(BuildDir)/gradle/app/src/main/libs/chartboost.jar" />
+      </false>
+    </if>
+
+
+    <if condition="DisableVungle">
+      <false>
+        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/converter-gson-2.5.0.jar" dst = "$S(BuildDir)/libs/converter-gson-2.5.0.jar" />
+        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/converter-gson-2.5.0.jar" dst = "$S(BuildDir)/gradle/app/src/main/libs/converter-gson-2.5.0.jar" />
+
+        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/logging-interceptor-3.12.0.jar" dst = "$S(BuildDir)/libs/logging-interceptor-3.12.0.jar" />
+        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/logging-interceptor-3.12.0.jar" dst = "$S(BuildDir)/gradle/app/src/main/libs/logging-interceptor-3.12.0.jar" />
+
+        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/okhttp-3.12.0.jar" dst = "$S(BuildDir)/libs/okhttp-3.12.0.jar" />
+        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/okhttp-3.12.0.jar" dst = "$S(BuildDir)/gradle/app/src/main/libs/okhttp-3.12.0.jar" />
+
+        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/okio-1.15.0.jar" dst = "$S(BuildDir)/libs/okio-1.15.0.jar" />
+        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/okio-1.15.0.jar" dst = "$S(BuildDir)/gradle/app/src/main/libs/okio-1.15.0.jar" />
+
+        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/retrofit-2.5.0.jar" dst = "$S(BuildDir)/libs/retrofit-2.5.0.jar" />
+        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/retrofit-2.5.0.jar" dst = "$S(BuildDir)/gradle/app/src/main/libs/retrofit-2.5.0.jar" />
+        
+      </false>
+    </if>
+
     
       <copyDir src="$S(PluginDir)/../ThirdParty/Android/Java"
 					dst = "$S(BuildDir)/src" />
@@ -80,20 +113,24 @@ EasyAds - unreal engine 4 ads plugin
 
     <insertValue value="com.android.volley,volley,1.1.1"/>
     <insertNewline/>
-  
-    
-    <insertValue value="com.google.ads.mediation,unity,3.2.0.0"/>
-    <insertNewline/>
-    
-    <insertValue value="com.unity3d.ads,unity-ads,3.2.0"/>
-    <insertNewline/>
-  
-    
-    <insertValue value="com.google.ads.mediation,chartboost,7.5.0.0"/>
-    <insertNewline/>
-    
 
+    <if condition="DisableUnity">
+      <false>
+        <insertValue value="com.google.ads.mediation,unity,3.2.0.0"/>
+        <insertNewline/>
     
+        <insertValue value="com.unity3d.ads,unity-ads,3.2.0"/>
+        <insertNewline/>
+      </false>
+    </if>
+
+    <if condition="DisableChartboost">
+      <false>
+        <insertValue value="com.google.ads.mediation,chartboost,7.5.0.0"/>
+        <insertNewline/>
+
+      </false>
+    </if>
 
     <insertValue value="repository $S(PluginDir)/../ThirdParty/Android/libs"/>
     <insertNewline/>
@@ -101,12 +138,17 @@ EasyAds - unreal engine 4 ads plugin
     <insertValue value="com.ads.util,util,1.0.0" />
     <insertNewline/>
 
-    <insertValue value="com.google.ads.mediation,vungle,6.4.11.1.0"/>
-    <insertNewline/>
+    <if condition="DisableVungle">
+      <false>
+        <insertValue value="com.google.ads.mediation,vungle,6.4.11.1.0"/>
+        <insertNewline/>
 
-    <insertValue value="com.vungle,publisher-sdk-android,6.4.11.0"/>
-    <insertNewline/>
+        <insertValue value="com.vungle,publisher-sdk-android,6.4.11.0"/>
+        <insertNewline/>
+      </false>
+    </if>
 
+    
     <if condition="EnableTestSuite">
       <true>
         <insertValue value="com.google.android.ads,mediation-test-suite,0.9.5"/>
@@ -178,7 +220,7 @@ EasyAds - unreal engine 4 ads plugin
 			
 	</androidManifestUpdates>
 
-  <!-- optional additions to proguard -->
+	<!-- optional additions to proguard -->
   <proguardAdditions>
     <insert>
       # Keep filenames and line numbers for stack traces
