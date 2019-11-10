@@ -1,7 +1,7 @@
 {
 	"FileVersion": 3,
-	"Version": 2,
-	"VersionName": "1.2",
+	"Version": 4,
+	"VersionName": "1.4",
 	"FriendlyName": "EasyAds",
 	"Description": "/** EasyAds - unreal engine 4 ads plugin** Copyright (C) 2019 feixuwu <feixuwu@outlook.com> All Rights Reserved.*/",
 	"Category": "Other",
