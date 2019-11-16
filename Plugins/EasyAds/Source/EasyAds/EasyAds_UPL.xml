@@ -45,20 +45,6 @@ EasyAds - unreal engine 4 ads plugin
 
     <if condition="DisableVungle">
       <false>
-        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/converter-gson-2.5.0.jar" dst = "$S(BuildDir)/libs/converter-gson-2.5.0.jar" />
-        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/converter-gson-2.5.0.jar" dst = "$S(BuildDir)/gradle/app/src/main/libs/converter-gson-2.5.0.jar" />
-
-        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/logging-interceptor-3.12.0.jar" dst = "$S(BuildDir)/libs/logging-interceptor-3.12.0.jar" />
-        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/logging-interceptor-3.12.0.jar" dst = "$S(BuildDir)/gradle/app/src/main/libs/logging-interceptor-3.12.0.jar" />
-
-        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/okhttp-3.12.0.jar" dst = "$S(BuildDir)/libs/okhttp-3.12.0.jar" />
-        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/okhttp-3.12.0.jar" dst = "$S(BuildDir)/gradle/app/src/main/libs/okhttp-3.12.0.jar" />
-
-        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/okio-1.15.0.jar" dst = "$S(BuildDir)/libs/okio-1.15.0.jar" />
-        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/okio-1.15.0.jar" dst = "$S(BuildDir)/gradle/app/src/main/libs/okio-1.15.0.jar" />
-
-        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/retrofit-2.5.0.jar" dst = "$S(BuildDir)/libs/retrofit-2.5.0.jar" />
-        <copyFile src="$S(PluginDir)/../ThirdParty/Android/libs/retrofit-2.5.0.jar" dst = "$S(BuildDir)/gradle/app/src/main/libs/retrofit-2.5.0.jar" />
         
       </false>
     </if>
@@ -145,6 +131,25 @@ EasyAds - unreal engine 4 ads plugin
 
         <insertValue value="com.vungle,publisher-sdk-android,6.4.11.0"/>
         <insertNewline/>
+      
+        <insertValue value="com.google.code.gson,gson,2.8.2"/>
+        <insertNewline/>
+		
+		    <insertValue value="com.squareup.retrofit2,converter-gson,2.5.0"/>
+        <insertNewline/>
+		
+		    <insertValue value="com.squareup.okhttp3,logging-interceptor,3.12.0"/>
+        <insertNewline/>
+		
+		    <insertValue value="com.squareup.okhttp3,okhttp,3.12.0"/>
+        <insertNewline/>
+		
+		    <insertValue value="com.squareup.okio,okio,1.15.0"/>
+        <insertNewline/>
+		
+		    <insertValue value="com.squareup.retrofit2,retrofit,2.5.0"/>
+        <insertNewline/>
+        
       </false>
     </if>
 
