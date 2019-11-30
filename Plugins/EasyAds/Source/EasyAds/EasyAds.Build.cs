@@ -113,12 +113,6 @@ public class EasyAds : ModuleRules
             // chartboost
             PublicAdditionalFrameworks.Add(
             new Framework(
-            "CHAMoatMobileAppKit",														// Framework name
-            "../ThirdParty/Frameworks/CHAMoatMobileAppKit.embeddedframework.zip")
-            );
-
-            PublicAdditionalFrameworks.Add(
-            new Framework(
             "Chartboost",														// Framework name
             "../ThirdParty/Frameworks/Chartboost.embeddedframework.zip")
             );
