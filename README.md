@@ -50,7 +50,7 @@ All features are available in C++ and Blueprint. this plugin automatic process a
 
 Watch this video to learn how to use the plugin
 
-[![how to use this plugin](https://img.youtube.com/vi/DRtkq0ewTz4/0.jpg)](https://youtu.be/uoAdOpi1wCQ)
+[![how to use this plugin](https://i9.ytimg.com/vi/uoAdOpi1wCQ/mq2.jpg?sqp=CMDS3vMF&rs=AOn4CLBVXR__6DMsJUULqi5iAxiF1xlHqg)](https://youtu.be/uoAdOpi1wCQ)
 
 1、Please first confirm you installed Visual Studio 2015 or 2017, and installed c++ compile support.
 
