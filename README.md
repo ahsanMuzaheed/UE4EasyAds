@@ -7,8 +7,10 @@ All features are available in C++ and Blueprint. this plugin automatic process a
  you can easy use just call when you need.
 
 # REMARK
-  the plugin is on market now!!, the git content will be newer than the market(currently, the market version only support admob).
-   https://www.unrealengine.com/marketplace/en-US/slug/ada7fb755f4541a685b497b6de0d0163
+  the plugin is on market now!!, the git content will be newer than the market.
+   basic: https://www.unrealengine.com/marketplace/en-US/slug/ada7fb755f4541a685b497b6de0d0163
+   
+   pro version:https://unrealengine.com/marketplace/en-US/product/easyads-pro/
    
   all the content will first update here and then submit to marketplace.
 
@@ -48,7 +50,7 @@ All features are available in C++ and Blueprint. this plugin automatic process a
 
 Watch this video to learn how to use the plugin
 
-[![how to use this plugin](https://img.youtube.com/vi/DRtkq0ewTz4/0.jpg)](https://youtu.be/DRtkq0ewTz4)
+[![how to use this plugin](https://img.youtube.com/vi/DRtkq0ewTz4/0.jpg)](https://youtu.be/uoAdOpi1wCQ)
 
 1、Please first confirm you installed Visual Studio 2015 or 2017, and installed c++ compile support.
 
